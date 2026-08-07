@@ -28,10 +28,9 @@ function GithubIcon({ size = 18 }: { size?: number }) {
 }
 
 const socialLinks = [
-  { href: "https://linkedin.com/in/vishalkumarsahu", icon: LinkedinIcon, label: "LinkedIn" },
-  { href: "https://twitter.com/vishalkumarsahu", icon: TwitterIcon, label: "Twitter" },
-  { href: "https://github.com/vishalkumarsahu", icon: GithubIcon, label: "GitHub" },
-  { href: "mailto:vishal@example.com", icon: Mail, label: "Email" },
+  { href: "https://www.linkedin.com/in/vishal-sahu-a56526238", icon: LinkedinIcon, label: "LinkedIn" },
+  { href: "https://github.com/sahuvishal395/", icon: GithubIcon, label: "GitHub" },
+  { href: "mailto:sahuvishal395@gmail.com", icon: Mail, label: "Email" },
 ];
 
 export default function Footer() {
@@ -55,7 +54,7 @@ export default function Footer() {
               className="text-sm"
               style={{ color: "var(--foreground-muted)" }}
             >
-              Product Marketing Lead
+               Growth & Product Marketing Lead
             </p>
           </div>
 

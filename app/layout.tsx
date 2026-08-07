@@ -20,23 +20,24 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Vishal Kumar Sahu — Product Marketing Lead",
+    default: "Vishal Kumar Sahu — Growth & Product Marketing Lead",
     template: "%s | Vishal Kumar Sahu",
   },
   description:
-    "Product Marketing Lead specializing in go-to-market strategy, product positioning, and building marketing engines that drive real business outcomes.",
+    "Growth & Product Marketing Lead specializing in go-to-market strategy, AI automation, product positioning, and building marketing engines that drive real business outcomes.",
   openGraph: {
-    title: "Vishal Kumar Sahu — Product Marketing Lead",
+    title: "Vishal Kumar Sahu — Growth & Product Marketing Lead",
     description:
-      "Product Marketing Lead specializing in go-to-market strategy, product positioning, and storytelling.",
+      "Growth & Product Marketing Lead specializing in go-to-market strategy, AI automation, and product positioning.",
+    url: "https://www.vishalkumarsahu.com",
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vishal Kumar Sahu — Product Marketing Lead",
+    title: "Vishal Kumar Sahu — Growth & Product Marketing Lead",
     description:
-      "Product Marketing Lead specializing in go-to-market strategy and product positioning.",
+      "Growth & Product Marketing Lead specializing in go-to-market strategy, AI automation, and product positioning.",
   },
 };
 

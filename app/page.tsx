@@ -29,6 +29,12 @@ const skillMarquee = [
   "Storytelling",
   "AI & MarTech",
   "Data-Driven Marketing",
+  "N8N Automation",
+  "Claude AI",
+  "Replit",
+  "Apify",
+  "AI Content Writing",
+  "Prompt Engineering",
 ];
 
 export default function Home() {
@@ -93,9 +99,9 @@ export default function Home() {
               >
                 <TypewriterText
                   strings={[
-                    "Product Marketing Lead",
+                    "Growth & Product Marketing Lead",
                     "GTM Strategist",
-                    "Storyteller",
+                    "AI-Powered Marketer",
                     "Marketing Thinker",
                   ]}
                 />
@@ -269,8 +275,8 @@ export default function Home() {
               className="text-sm leading-relaxed mb-4"
               style={{ color: "var(--foreground-secondary)" }}
             >
-              Product Marketing Lead with 6+ years of experience in GTM
-              strategy, positioning, and storytelling.
+              Growth & Product Marketing Lead with 3+ years of experience in GTM
+              strategy, AI automation, and storytelling.
             </p>
             <span
               className="inline-flex items-center gap-1 text-xs font-medium link-hover"

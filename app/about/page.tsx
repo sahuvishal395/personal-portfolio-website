@@ -2,8 +2,23 @@
 
 import PageTransition from "../components/PageTransition";
 import { motion } from "framer-motion";
-import { MapPin, Briefcase, Heart } from "lucide-react";
+import { MapPin, Briefcase, Heart, Download } from "lucide-react";
 import { bio, timeline, skills } from "../data/about";
+
+// Helper to parse **bold** markdown in text
+function parseInlineBold(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return (
+        <strong key={i} style={{ color: "var(--foreground)", fontWeight: 600 }}>
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return <span key={i}>{part}</span>;
+  });
+}
 
 export default function AboutPage() {
   return (
@@ -78,6 +93,27 @@ export default function AboutPage() {
               </p>
             ))}
           </motion.div>
+
+          {/* Resume Download Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45 }}
+            className="mt-6"
+          >
+            <a
+              href="/vishal_resume.pdf"
+              download
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-white transition-all duration-200 hover:scale-105 hover:shadow-lg"
+              style={{
+                background:
+                  "linear-gradient(135deg, var(--gradient-1), var(--gradient-2))",
+              }}
+              id="resume-download"
+            >
+              <Download size={16} /> Download Resume
+            </a>
+          </motion.div>
         </div>
 
         {/* Philosophy */}
@@ -107,10 +143,11 @@ export default function AboutPage() {
                     className="text-sm leading-relaxed ml-2 mb-2"
                     style={{ color: "var(--foreground-secondary)" }}
                   >
-                    {line}
+                    • {parseInlineBold(line.slice(2))}
                   </p>
                 );
               }
+              if (line.trim() === "") return <br key={i} />;
               return (
                 <p
                   key={i}

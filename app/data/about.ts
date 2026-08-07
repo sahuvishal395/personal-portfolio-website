@@ -8,11 +8,11 @@ export interface TimelineEntry {
 
 export const bio = {
   name: "Vishal Kumar Sahu",
-  tagline: "Product Marketing Lead",
+  tagline: "Growth & Product Marketing Lead",
   location: "India",
-  summary: `I'm a Product Marketing Lead with a passion for crafting compelling narratives that bridge the gap between products and people. I specialize in go-to-market strategy, product positioning, and building marketing engines that drive real business outcomes.
+  summary: `I'm a Growth & Product Marketing Lead with a passion for crafting compelling narratives that bridge the gap between products and people. I specialize in go-to-market strategy, product positioning, and building marketing engines that drive real business outcomes.
 
-My approach combines data-driven insights with creative storytelling—I believe the best marketing makes complex products feel simple and inevitable. Over the years, I've helped launch products across B2B and B2C markets, built high-performing marketing teams, and developed frameworks that teams continue to use long after I've moved on.
+My approach combines data-driven insights with creative storytelling—I believe the best marketing makes complex products feel simple and inevitable. I leverage AI-powered tools like N8N, Claude, Replit, and Apify to automate content workflows, research scraping, and template-based image generation at scale.
 
 When I'm not deep in a positioning exercise or launch plan, you'll find me reading about behavioral psychology, exploring the intersection of AI and marketing, or writing about the craft of product marketing on my blog.`,
   philosophy: `I believe product marketing sits at the most exciting intersection in any organization—between what we build and who we build it for. Great product marketing doesn't just communicate value; it *creates* it by shaping how customers think about their problems and possibilities.
@@ -26,36 +26,44 @@ My core principles:
 
 export const timeline: TimelineEntry[] = [
   {
-    year: "2024 — Present",
-    role: "Product Marketing Lead",
-    company: "Current Company",
+    year: "March 2026 — Present",
+    role: "Growth & Product Marketing Lead",
+    company: "TestMu AI (formerly LambdaTest)",
     description:
-      "Leading product marketing strategy for the core platform. Driving go-to-market for major product launches, competitive positioning, and sales enablement across the organization.",
-    skills: ["GTM Strategy", "Product Positioning", "Sales Enablement", "Content Strategy"],
+      "Leading growth and product marketing post-rebranding from LambdaTest to TestMu AI. Directing cross-channel positioning, website restructuring, digital presence alignment, content strategy, and sales enablement. Built AI agentic workflows using N8N, Claude, and Apify to automate content research, scraping, and template-based image generation.",
+    skills: ["GTM Strategy", "Product Positioning", "AI Automations", "N8N", "Claude AI", "Product Hunt"],
   },
   {
-    year: "2022 — 2024",
-    role: "Senior Product Marketing Manager",
-    company: "Previous Company",
+    year: "Nov 2023 — March 2026",
+    role: "Digital Marketing Executive",
+    company: "LambdaTest",
     description:
-      "Managed product marketing for a portfolio of B2B SaaS products. Led a team of 3 PMMs and drove a 40% increase in win rate through refreshed competitive positioning.",
-    skills: ["Team Leadership", "Competitive Intelligence", "Launch Planning", "Analyst Relations"],
+      "Promoted to executive role after 6 months of internship. Managed paid media across Google, Meta, and LinkedIn ads optimizing B2B conversion metrics. Secured 'Position 0' on SERPs, optimized 100+ landing pages to maximize conversion rates, and managed Google My Business & Pinterest (achieving 10k+ monthly views). Led LambdaTest's Product Hunt launch to #1 Product of the Day.",
+    skills: ["Paid Advertising", "SEO Optimization", "Conversion Rate Optimization (CRO)", "Google Ads", "Meta Ads"],
   },
   {
-    year: "2020 — 2022",
-    role: "Product Marketing Manager",
-    company: "Growth Stage Startup",
+    year: "May 2023 — Nov 2023",
+    role: "Digital Marketing Intern",
+    company: "LambdaTest",
     description:
-      "First PMM hire. Built the product marketing function from scratch, including messaging frameworks, sales playbooks, and customer marketing programs.",
-    skills: ["0-to-1 PMM", "Messaging Frameworks", "Customer Marketing", "Sales Playbooks"],
+      "Landed internship to gain hands-on marketing experience. Directed on-page and off-page SEO strategies, including optimizing 150+ articles and creating 40+ content-focused webpages. Built outreach campaigns to secure high-quality backlinks and coordinated key influencer marketing collaborations across Instagram, Facebook, X, and LinkedIn.",
+    skills: ["SEO Strategy", "Content Marketing", "Influencer Marketing", "Backlink Outreach", "Link Building"],
   },
   {
-    year: "2018 — 2020",
-    role: "Marketing Associate",
-    company: "Tech Company",
+    year: "Sep 2022 — May 2023",
+    role: "Digital Marketing Professional Program",
+    company: "Kraftshala",
     description:
-      "Started my marketing career with a focus on content creation, campaign execution, and market research. Developed a deep understanding of B2B buying journeys.",
-    skills: ["Content Marketing", "Campaign Management", "Market Research", "Analytics"],
+      "Rigorous digital marketing and strategy training. Developed deep competencies in product positioning, content strategy, user behavior, and consumer persona design. Created and pitch-presented full-funnel digital marketing campaigns for marquee brands like MG, TATA, and HCL.",
+    skills: ["Digital Strategy", "User Personas", "Market Research", "Positioning Strategy", "Brand Campaigns"],
+  },
+  {
+    year: "July 2022 — Sep 2022",
+    role: "Sales Trainee",
+    company: "Byju's",
+    description:
+      "Began career in direct outreach to understand consumer psychology, map user personas, identify pain points, and tackle real-time user questions. Partnered closely with the sales team to analyze market trends and generate warm leads, converting two key deals within the first six weeks.",
+    skills: ["Consumer Psychology", "Persona Identification", "Customer Outreach", "Direct Sales", "Lead Generation"],
   },
 ];
 
@@ -69,18 +77,32 @@ export const skills = [
   "Market Analysis",
   "Launch Planning",
   "Messaging Frameworks",
-  "Analyst Relations",
+  "Growth Marketing",
   "Team Leadership",
   "Cross-functional Collaboration",
   "Data-Driven Marketing",
   "Brand Strategy",
   "AI & MarTech",
   "Storytelling",
+  "N8N Automation",
+  "Claude AI",
+  "Replit",
+  "Apify Web Scraping",
+  "ChatGPT / OpenAI",
+  "AI Content Writing",
+  "Content Research Scraping",
+  "Template-based Image Generation",
+  "Prompt Engineering",
+  "AI Workflow Automation",
+  "Marketing Analytics",
+  "SEO & SEM",
+  "Figma",
+  "HubSpot",
 ];
 
 export const stats = [
-  { label: "Years Experience", value: "6+" },
-  { label: "Products Launched", value: "20+" },
-  { label: "Win Rate Increase", value: "40%" },
-  { label: "Team Members Led", value: "8+" },
+  { label: "Years Experience", value: "3+" },
+  { label: "Products Launched", value: "10+" },
+  { label: "AI Workflows Automated", value: "50+" },
+  { label: "Content Pipelines Built", value: "15+" },
 ];
