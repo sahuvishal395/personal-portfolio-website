@@ -19,9 +19,6 @@ import { stats } from "./data/about";
 const skillMarquee = [
   "Product Positioning",
   "Go-to-Market",
-  "Influencer Marketing",
-  "Creator Campaigns",
-  "Creator Negotiation",
   "Competitive Intel",
   "Sales Enablement",
   "Content Strategy",
@@ -30,6 +27,8 @@ const skillMarquee = [
   "Launch Planning",
   "Brand Strategy",
   "Storytelling",
+  "Influencer Marketing",
+  "Creator Campaigns",
   "AI & MarTech",
   "Data-Driven Marketing",
   "N8N Automation",
@@ -104,7 +103,6 @@ export default function Home() {
                   strings={[
                     "Growth & Product Marketing Lead",
                     "GTM Strategist",
-                    "Influencer Marketing Lead",
                     "AI-Powered Marketer",
                     "Marketing Thinker",
                   ]}

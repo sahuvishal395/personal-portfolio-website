@@ -148,12 +148,12 @@ export default function ResumePage() {
                 </div>
                 <p className="text-sm font-medium mb-2" style={{ color: "var(--foreground-muted)" }}>TestMu AI (formerly LambdaTest)</p>
                 <ul className="space-y-1.5 text-sm" style={{ color: "var(--foreground-secondary)" }}>
+                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Leading growth and product marketing post-rebranding from LambdaTest to TestMu AI.</li>
+                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Directing cross-channel positioning, website restructuring, digital presence alignment, and content strategy.</li>
+                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built AI-powered automation workflows using N8N, Claude, and Apify for content research, scraping, and template-based image generation.</li>
                   <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Own end-to-end influencer marketing, managing a <strong>$1.3M creator budget</strong> from discovery and briefing through to post-campaign reporting.</li>
                   <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Scrape, research, and shortlist creators; run outreach, negotiate deliverables, usage rights, and commercials, and onboard influencers across nano, micro, and macro segments.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Collaborate with creators to script and produce campaign videos, publishing across Instagram, Facebook, X, and LinkedIn.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Measure campaign effectiveness across reach, engagement, CTR, and follower growth, reporting actionable insights to leadership.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Leading growth and product marketing post-rebranding from LambdaTest to TestMu AI, directing cross-channel positioning, website restructuring, and content strategy.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built AI-powered automation workflows using N8N, Claude, and Apify for content research, scraping, and template-based image generation.</li>
+                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Produce campaign videos with creators for Instagram, Facebook, X, and LinkedIn, and report effectiveness on reach, engagement, CTR, and follower growth.</li>
                 </ul>
               </div>
 
