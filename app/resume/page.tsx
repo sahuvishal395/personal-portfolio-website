@@ -125,7 +125,7 @@ export default function ResumePage() {
               className="text-sm leading-relaxed"
               style={{ color: "var(--foreground-secondary)" }}
             >
-              Growth & Product Marketing Lead with 3+ years of experience in go-to-market strategy, product positioning, and building AI-powered marketing engines. Expert in leveraging tools like N8N, Claude, Replit, and Apify to automate content workflows, research scraping, and template-based image generation at scale. Passionate about bridging the gap between products and people through compelling narratives and data-driven insights.
+              Growth & Product Marketing Lead with 3+ years of experience in go-to-market strategy, product positioning, and end-to-end influencer marketing — including a $1.3M creator budget managed across discovery, negotiation, onboarding, video production, and performance reporting. Expert in leveraging tools like N8N, Claude, Replit, and Apify to automate content workflows, research scraping, and template-based image generation at scale. Passionate about bridging the gap between products and people through compelling narratives and data-driven insights.
             </p>
           </div>
 
@@ -148,8 +148,11 @@ export default function ResumePage() {
                 </div>
                 <p className="text-sm font-medium mb-2" style={{ color: "var(--foreground-muted)" }}>TestMu AI (formerly LambdaTest)</p>
                 <ul className="space-y-1.5 text-sm" style={{ color: "var(--foreground-secondary)" }}>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Leading growth and product marketing post-rebranding from LambdaTest to TestMu AI.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Directing cross-channel positioning, website restructuring, digital presence alignment, and content strategy.</li>
+                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Own end-to-end influencer marketing, managing a <strong>$1.3M creator budget</strong> from discovery and briefing through to post-campaign reporting.</li>
+                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Scrape, research, and shortlist creators; run outreach, negotiate deliverables, usage rights, and commercials, and onboard influencers across nano, micro, and macro segments.</li>
+                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Collaborate with creators to script and produce campaign videos, publishing across Instagram, Facebook, X, and LinkedIn.</li>
+                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Measure campaign effectiveness across reach, engagement, CTR, and follower growth, reporting actionable insights to leadership.</li>
+                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Leading growth and product marketing post-rebranding from LambdaTest to TestMu AI, directing cross-channel positioning, website restructuring, and content strategy.</li>
                   <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built AI-powered automation workflows using N8N, Claude, and Apify for content research, scraping, and template-based image generation.</li>
                 </ul>
               </div>
@@ -232,6 +235,12 @@ export default function ResumePage() {
                 </p>
               </div>
               <div>
+                <h3 className="text-sm font-bold mb-2" style={{ color: "var(--foreground)" }}>Influencer & Creator Marketing</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "var(--foreground-secondary)" }}>
+                  End-to-End Campaign Management • Creator Research, Scouting & Outreach • Commercial Negotiation • Creator Onboarding • Influencer Budget Management • Campaign Planning & Content Calendars • Video Content Production • Performance Tracking (Reach, Engagement, CTR, Follower Growth)
+                </p>
+              </div>
+              <div>
                 <h3 className="text-sm font-bold mb-2" style={{ color: "var(--foreground)" }}>AI & Automation Tools</h3>
                 <p className="text-sm leading-relaxed" style={{ color: "var(--foreground-secondary)" }}>
                   N8N Automation • Claude AI • ChatGPT / OpenAI • Replit • Apify Web Scraping • Prompt Engineering • AI Content Writing • AI Workflow Automation • Template-based Image Generation • Content Research Scraping
@@ -255,6 +264,7 @@ export default function ResumePage() {
               Key Achievements
             </h2>
             <ul className="space-y-1.5 text-sm" style={{ color: "var(--foreground-secondary)" }}>
+              <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Managed a $1.3M influencer marketing budget end-to-end across nano, micro, and macro creator segments</li>
               <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built 50+ AI-powered automation workflows for marketing operations</li>
               <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Launched 10+ products with comprehensive go-to-market strategies</li>
               <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built 15+ automated content pipelines reducing manual effort by 70%</li>

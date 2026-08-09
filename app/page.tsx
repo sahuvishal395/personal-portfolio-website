@@ -19,6 +19,9 @@ import { stats } from "./data/about";
 const skillMarquee = [
   "Product Positioning",
   "Go-to-Market",
+  "Influencer Marketing",
+  "Creator Campaigns",
+  "Creator Negotiation",
   "Competitive Intel",
   "Sales Enablement",
   "Content Strategy",
@@ -101,6 +104,7 @@ export default function Home() {
                   strings={[
                     "Growth & Product Marketing Lead",
                     "GTM Strategist",
+                    "Influencer Marketing Lead",
                     "AI-Powered Marketer",
                     "Marketing Thinker",
                   ]}
@@ -276,7 +280,8 @@ export default function Home() {
               style={{ color: "var(--foreground-secondary)" }}
             >
               Growth & Product Marketing Lead with 3+ years of experience in GTM
-              strategy, AI automation, and storytelling.
+              strategy, influencer marketing, and AI automation — including a
+              $1.3M creator budget managed end-to-end.
             </p>
             <span
               className="inline-flex items-center gap-1 text-xs font-medium link-hover"

@@ -12,6 +12,8 @@ export const bio = {
   location: "India",
   summary: `I'm a Growth & Product Marketing Lead with a passion for crafting compelling narratives that bridge the gap between products and people. I specialize in go-to-market strategy, product positioning, and building marketing engines that drive real business outcomes.
 
+Most recently I've owned influencer marketing end-to-end, managing a $1.3M creator budget across nano, micro, and macro segments — running everything from creator scraping and research to outreach, commercial negotiation, onboarding, video production, and cross-platform publishing, then measuring it all on reach, engagement, CTR, and follower growth.
+
 My approach combines data-driven insights with creative storytelling—I believe the best marketing makes complex products feel simple and inevitable. I leverage AI-powered tools like N8N, Claude, Replit, and Apify to automate content workflows, research scraping, and template-based image generation at scale.
 
 When I'm not deep in a positioning exercise or launch plan, you'll find me reading about behavioral psychology, exploring the intersection of AI and marketing, or writing about the craft of product marketing on my blog.`,
@@ -30,8 +32,8 @@ export const timeline: TimelineEntry[] = [
     role: "Growth & Product Marketing Lead",
     company: "TestMu AI (formerly LambdaTest)",
     description:
-      "Leading growth and product marketing post-rebranding from LambdaTest to TestMu AI. Directing cross-channel positioning, website restructuring, digital presence alignment, content strategy, and sales enablement. Built AI agentic workflows using N8N, Claude, and Apify to automate content research, scraping, and template-based image generation.",
-    skills: ["GTM Strategy", "Product Positioning", "AI Automations", "N8N", "Claude AI", "Product Hunt"],
+      "Own end-to-end influencer marketing, managing a $1.3M creator budget — scraping, researching, and shortlisting creators, then running outreach, negotiating deliverables, usage rights, and commercials, and onboarding talent across nano, micro, and macro segments. Collaborate with creators to script and produce campaign videos published across Instagram, Facebook, X, and LinkedIn, and report campaign effectiveness on reach, engagement, CTR, and follower growth to leadership. Alongside this, lead growth and product marketing through the LambdaTest to TestMu AI rebrand — directing cross-channel positioning, website restructuring, and content strategy, and building AI agentic workflows with N8N, Claude, and Apify.",
+    skills: ["Influencer Marketing", "Creator Sourcing", "Budget Management", "Creator Negotiation", "GTM Strategy", "AI Automations", "N8N", "Claude AI"],
   },
   {
     year: "Nov 2023 — March 2026",
@@ -70,6 +72,11 @@ export const timeline: TimelineEntry[] = [
 export const skills = [
   "Product Positioning",
   "Go-to-Market Strategy",
+  "Influencer Marketing",
+  "Creator Sourcing & Outreach",
+  "Creator Negotiation & Onboarding",
+  "Campaign Budget Management",
+  "Video Content Production",
   "Competitive Intelligence",
   "Sales Enablement",
   "Content Strategy",
@@ -102,7 +109,7 @@ export const skills = [
 
 export const stats = [
   { label: "Years Experience", value: "3+" },
+  { label: "Influencer Budget Managed", value: "$1.3M" },
   { label: "Products Launched", value: "10+" },
   { label: "AI Workflows Automated", value: "50+" },
-  { label: "Content Pipelines Built", value: "15+" },
 ];

@@ -24,11 +24,11 @@ export const metadata: Metadata = {
     template: "%s | Vishal Kumar Sahu",
   },
   description:
-    "Growth & Product Marketing Lead specializing in go-to-market strategy, AI automation, product positioning, and building marketing engines that drive real business outcomes.",
+    "Growth & Product Marketing Lead specializing in go-to-market strategy, influencer marketing, AI automation, and product positioning. Managed a $1.3M creator budget end-to-end.",
   openGraph: {
     title: "Vishal Kumar Sahu — Growth & Product Marketing Lead",
     description:
-      "Growth & Product Marketing Lead specializing in go-to-market strategy, AI automation, and product positioning.",
+      "Growth & Product Marketing Lead specializing in go-to-market strategy, influencer marketing, AI automation, and product positioning.",
     url: "https://www.vishalkumarsahu.com",
     type: "website",
     locale: "en_US",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Vishal Kumar Sahu — Growth & Product Marketing Lead",
     description:
-      "Growth & Product Marketing Lead specializing in go-to-market strategy, AI automation, and product positioning.",
+      "Growth & Product Marketing Lead specializing in go-to-market strategy, influencer marketing, AI automation, and product positioning.",
   },
 };
 
