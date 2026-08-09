@@ -28,6 +28,7 @@ function GithubIcon({ size = 18 }: { size?: number }) {
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
+  { href: "/influencer-marketing", label: "Influencer" },
   { href: "/blogs", label: "Blogs" },
   { href: "/reading-list", label: "Reading List" },
   { href: "/resume", label: "Resume" },

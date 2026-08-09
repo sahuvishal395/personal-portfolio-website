@@ -1,8 +1,9 @@
 "use client";
 
 import PageTransition from "../components/PageTransition";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { MapPin, Briefcase, Heart, Download } from "lucide-react";
+import { MapPin, Briefcase, Heart, Download, ArrowRight } from "lucide-react";
 import { bio, timeline, skills } from "../data/about";
 
 // Helper to parse **bold** markdown in text
@@ -99,7 +100,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45 }}
-            className="mt-6"
+            className="mt-6 flex flex-wrap gap-3"
           >
             <a
               href="/vishal_resume.pdf"
@@ -113,6 +114,16 @@ export default function AboutPage() {
             >
               <Download size={16} /> Download Resume
             </a>
+            <Link
+              href="/influencer-marketing"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105"
+              style={{
+                border: "1px solid var(--border)",
+                color: "var(--foreground-secondary)",
+              }}
+            >
+              Influencer Marketing Case Study <ArrowRight size={16} />
+            </Link>
           </motion.div>
         </div>
 
