@@ -8,9 +8,12 @@ import {
   BarChart3,
   Briefcase,
   Calendar,
+  Code2,
+  Database,
   Download,
+  Filter,
   Layers,
-  Search,
+  LineChart,
   Send,
   Share2,
   FileText,
@@ -20,21 +23,47 @@ import {
 
 const metrics = [
   { value: "$1.3M", label: "Creator budget managed" },
+  { value: "100+", label: "Influencers onboarded" },
+  { value: "4", label: "Platforms: LinkedIn, Instagram, YouTube, X" },
   { value: "3", label: "Creator tiers: nano, micro, macro" },
-  { value: "4", label: "Publishing platforms" },
-  { value: "7", label: "Stages owned end-to-end" },
+];
+
+const stack = [
+  {
+    icon: Database,
+    tool: "Apify",
+    title: "Profile Scraping",
+    body: "Used Apify and AI tools to scrape creator profiles at scale across LinkedIn, Instagram, YouTube, and X — turning creator discovery from manual searching into a repeatable data pipeline.",
+  },
+  {
+    icon: Filter,
+    tool: "Automation",
+    title: "Filtering & Outreach",
+    body: "Ran the scraped data through automation tools to filter down to genuine campaign fit, then drove outreach from the same pipeline — so shortlisting and first contact scaled together instead of bottlenecking on manual review.",
+  },
+  {
+    icon: Code2,
+    tool: "Replit",
+    title: "Custom Tracking App",
+    body: "Built a web app on Replit to run the whole operation: tracking every influencer, managing budget against spend, and monitoring live campaign performance — engagement, likes, and comments — in one place rather than across scattered spreadsheets.",
+  },
 ];
 
 const process = [
   {
-    icon: Search,
-    title: "Sourcing & Research",
-    body: "Scraped, researched, and shortlisted creators against campaign fit, audience quality, and category relevance — building the pipeline before any outreach began.",
+    icon: Database,
+    title: "Sourcing at Scale",
+    body: "Scraped creator profiles across all four platforms using Apify and AI tooling, building a searchable pool instead of hunting creators one at a time.",
+  },
+  {
+    icon: Filter,
+    title: "Automated Filtering",
+    body: "Filtered the scraped pool with automation tools against campaign fit, audience quality, and category relevance — narrowing to a real shortlist without manual review of every profile.",
   },
   {
     icon: Send,
     title: "Outreach",
-    body: "Ran first-contact outreach across the shortlist, briefing creators on the campaign, the product, and the deliverables expected.",
+    body: "Ran outreach at scale off the filtered list, briefing creators on the campaign, the product, and the deliverables expected.",
   },
   {
     icon: FileText,
@@ -43,8 +72,8 @@ const process = [
   },
   {
     icon: UserPlus,
-    title: "Onboarding",
-    body: "Onboarded influencers across nano, micro, and macro segments, taking each from agreed terms to a briefed, campaign-ready collaborator.",
+    title: "Onboarding 100+ Creators",
+    body: "Onboarded over 100 influencers across nano, micro, and macro segments, taking each from agreed terms to a briefed, campaign-ready collaborator.",
   },
   {
     icon: Video,
@@ -54,16 +83,16 @@ const process = [
   {
     icon: Share2,
     title: "Cross-Platform Publishing",
-    body: "Published campaign content across Instagram, Facebook, X, and LinkedIn, coordinating rollout timing across every channel.",
+    body: "Published campaign content across LinkedIn, Instagram, YouTube, and X, coordinating rollout timing across every channel.",
   },
   {
-    icon: BarChart3,
-    title: "Measurement & Reporting",
-    body: "Measured campaign effectiveness on reach, engagement, CTR, and follower growth, then reported actionable insights back to leadership.",
+    icon: LineChart,
+    title: "Live Performance Tracking",
+    body: "Tracked campaigns live through the Replit app — engagement, likes, comments — alongside reach, CTR, and follower growth, and reported actionable insights back to leadership.",
   },
 ];
 
-const platforms = ["Instagram", "Facebook", "X", "LinkedIn"];
+const platforms = ["LinkedIn", "Instagram", "YouTube", "X (Twitter)"];
 
 const segments = [
   {
@@ -72,7 +101,7 @@ const segments = [
   },
   {
     tier: "Micro",
-    note: "Mid-tier reach with strong niche authority and consistent conversion.",
+    note: "Mid-tier reach with strong niche authority and consistent engagement.",
   },
   {
     tier: "Macro",
@@ -80,7 +109,15 @@ const segments = [
   },
 ];
 
-const kpis = ["Reach", "Engagement", "CTR", "Follower Growth"];
+const kpis = [
+  "Reach",
+  "Engagement",
+  "CTR",
+  "Follower Growth",
+  "Likes",
+  "Comments",
+  "Budget vs. Spend",
+];
 
 const capabilities = [
   "Influencer Marketing",
@@ -88,7 +125,9 @@ const capabilities = [
   "Creator Negotiation & Onboarding",
   "Campaign Budget Management",
   "Video Content Production",
-  "Campaign Planning",
+  "Apify Web Scraping",
+  "Marketing Automation",
+  "No-Code / Replit App Building",
   "Cross-Platform Publishing",
   "Performance Reporting",
 ];
@@ -124,7 +163,7 @@ export default function InfluencerMarketingPage() {
             className="text-3xl sm:text-4xl font-bold tracking-tight mb-4"
             style={{ color: "var(--foreground)" }}
           >
-            Influencer Marketing
+            Influencer Marketing at Scale
           </motion.h1>
 
           <motion.div
@@ -156,14 +195,20 @@ export default function InfluencerMarketingPage() {
             className="text-base leading-relaxed"
             style={{ color: "var(--foreground-secondary)" }}
           >
-            I own influencer marketing end-to-end at TestMu AI, managing a{" "}
+            I own influencer marketing end-to-end at TestMu AI — a{" "}
             <strong style={{ color: "var(--foreground)", fontWeight: 600 }}>
               $1.3M creator budget
             </strong>{" "}
-            across nano, micro, and macro segments. That means every stage sits
-            with me — finding the right creators, getting them on board on the
-            right terms, making the content with them, shipping it across
-            platforms, and reporting on what it actually returned.
+            and{" "}
+            <strong style={{ color: "var(--foreground)", fontWeight: 600 }}>
+              100+ influencers onboarded
+            </strong>{" "}
+            across LinkedIn, Instagram, YouTube, and X. Running that volume
+            manually was never going to work, so I built the tooling to do it:
+            scraping creator profiles with Apify, filtering and reaching out
+            through automation, and tracking every influencer, the budget
+            against spend, and live campaign performance in a web app I built
+            on Replit.
           </motion.p>
         </div>
 
@@ -192,11 +237,76 @@ export default function InfluencerMarketingPage() {
           ))}
         </motion.div>
 
+        {/* The Stack — the differentiator */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.55 }}
+          className="mb-16"
+        >
+          <div className="flex items-center gap-2 mb-2">
+            <Code2 size={16} style={{ color: "var(--accent)" }} />
+            <h2
+              className="text-xl font-bold"
+              style={{ color: "var(--foreground)" }}
+            >
+              The Stack I Built
+            </h2>
+          </div>
+          <p
+            className="text-sm leading-relaxed mb-6"
+            style={{ color: "var(--foreground-secondary)" }}
+          >
+            Creator ops at this volume is a data problem before it is a
+            creative one. Rather than scale headcount, I scaled tooling.
+          </p>
+
+          <div className="grid sm:grid-cols-3 gap-4">
+            {stack.map((s, i) => {
+              const Icon = s.icon;
+              return (
+                <motion.div
+                  key={s.title}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 + i * 0.1, duration: 0.4 }}
+                  className="glass-card p-5 flex flex-col"
+                >
+                  <div className="flex items-center gap-2 mb-3">
+                    <Icon size={16} style={{ color: "var(--accent)" }} />
+                    <span
+                      className="text-xs font-mono px-2 py-0.5 rounded-md"
+                      style={{
+                        background: "var(--accent-light)",
+                        color: "var(--accent)",
+                      }}
+                    >
+                      {s.tool}
+                    </span>
+                  </div>
+                  <h3
+                    className="text-base font-bold mb-2"
+                    style={{ color: "var(--foreground)" }}
+                  >
+                    {s.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "var(--foreground-secondary)" }}
+                  >
+                    {s.body}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </motion.div>
+
         {/* Process */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 0.65 }}
           className="mb-16"
         >
           <div className="flex items-center gap-2 mb-6">
@@ -224,7 +334,7 @@ export default function InfluencerMarketingPage() {
                     key={step.title}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.7 + i * 0.08, duration: 0.5 }}
+                    transition={{ delay: 0.7 + i * 0.07, duration: 0.5 }}
                     className="relative pl-8"
                   >
                     {/* Timeline dot */}
@@ -270,7 +380,7 @@ export default function InfluencerMarketingPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
+          transition={{ delay: 0.75 }}
           className="mb-16"
         >
           <h2
@@ -303,16 +413,19 @@ export default function InfluencerMarketingPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.75 }}
+          transition={{ delay: 0.8 }}
           className="grid sm:grid-cols-2 gap-6 mb-16"
         >
           <div className="glass-card p-6">
-            <h2
-              className="text-base font-bold mb-4"
-              style={{ color: "var(--foreground)" }}
-            >
-              Where Campaigns Ship
-            </h2>
+            <div className="flex items-center gap-2 mb-4">
+              <Share2 size={15} style={{ color: "var(--accent)" }} />
+              <h2
+                className="text-base font-bold"
+                style={{ color: "var(--foreground)" }}
+              >
+                Where Campaigns Ship
+              </h2>
+            </div>
             <div className="flex flex-wrap gap-2">
               {platforms.map((p) => (
                 <span key={p} className="tag-pill">
@@ -323,12 +436,15 @@ export default function InfluencerMarketingPage() {
           </div>
 
           <div className="glass-card p-6">
-            <h2
-              className="text-base font-bold mb-4"
-              style={{ color: "var(--foreground)" }}
-            >
-              What I Measure
-            </h2>
+            <div className="flex items-center gap-2 mb-4">
+              <BarChart3 size={15} style={{ color: "var(--accent)" }} />
+              <h2
+                className="text-base font-bold"
+                style={{ color: "var(--foreground)" }}
+              >
+                What the Dashboard Tracks
+              </h2>
+            </div>
             <div className="flex flex-wrap gap-2">
               {kpis.map((k) => (
                 <span key={k} className="tag-pill">
@@ -343,7 +459,7 @@ export default function InfluencerMarketingPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
+          transition={{ delay: 0.85 }}
           className="mb-16"
         >
           <h2
@@ -365,7 +481,7 @@ export default function InfluencerMarketingPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.85 }}
+          transition={{ delay: 0.9 }}
           className="glass-card p-6 sm:p-8"
         >
           <h2
@@ -378,8 +494,9 @@ export default function InfluencerMarketingPage() {
             className="text-sm leading-relaxed mb-6"
             style={{ color: "var(--foreground-secondary)" }}
           >
-            Happy to talk through sourcing, negotiation, or how to structure a
-            budget across creator tiers.
+            Happy to talk through sourcing pipelines, negotiation, or how to
+            structure a budget across creator tiers — and how to build the
+            tooling that keeps it all tracked.
           </p>
           <div className="flex flex-wrap gap-3">
             <Link

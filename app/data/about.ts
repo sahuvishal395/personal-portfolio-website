@@ -14,7 +14,7 @@ export const bio = {
 
 My approach combines data-driven insights with creative storytelling—I believe the best marketing makes complex products feel simple and inevitable. I leverage AI-powered tools like N8N, Claude, Replit, and Apify to automate content workflows, research scraping, and template-based image generation at scale.
 
-Alongside that, I've owned influencer marketing end-to-end, managing a $1.3M creator budget across nano, micro, and macro segments — running everything from creator scraping and research to outreach, commercial negotiation, onboarding, video production, and cross-platform publishing, then measuring it all on reach, engagement, CTR, and follower growth.
+Alongside that, I've owned influencer marketing end-to-end — a $1.3M creator budget and 100+ influencers onboarded across LinkedIn, Instagram, YouTube, and X. Running that volume manually wasn't realistic, so I built the stack for it: Apify to scrape creator profiles, automation to filter and run outreach, and a web app on Replit to track influencers, budget, and live performance in one place.
 
 When I'm not deep in a positioning exercise or launch plan, you'll find me reading about behavioral psychology, exploring the intersection of AI and marketing, or writing about the craft of product marketing on my blog.`,
   philosophy: `I believe product marketing sits at the most exciting intersection in any organization—between what we build and who we build it for. Great product marketing doesn't just communicate value; it *creates* it by shaping how customers think about their problems and possibilities.
@@ -32,8 +32,8 @@ export const timeline: TimelineEntry[] = [
     role: "Growth & Product Marketing Lead",
     company: "TestMu AI (formerly LambdaTest)",
     description:
-      "Leading growth and product marketing post-rebranding from LambdaTest to TestMu AI. Directing cross-channel positioning, website restructuring, digital presence alignment, content strategy, and sales enablement. Built AI agentic workflows using N8N, Claude, and Apify to automate content research, scraping, and template-based image generation. Alongside this, own end-to-end influencer marketing on a $1.3M creator budget — sourcing and shortlisting creators, running outreach and commercial negotiation, onboarding talent across nano, micro, and macro segments, producing campaign videos for Instagram, Facebook, X, and LinkedIn, and reporting on reach, engagement, CTR, and follower growth.",
-    skills: ["GTM Strategy", "Product Positioning", "AI Automations", "N8N", "Claude AI", "Influencer Marketing", "Creator Sourcing", "Budget Management"],
+      "Leading growth and product marketing post-rebranding from LambdaTest to TestMu AI. Directing cross-channel positioning, website restructuring, digital presence alignment, content strategy, and sales enablement. Built AI agentic workflows using N8N, Claude, and Apify to automate content research, scraping, and template-based image generation. Alongside this, own end-to-end influencer marketing on a $1.3M creator budget, onboarding 100+ influencers across LinkedIn, Instagram, YouTube, and X. Built the tooling to run it at that volume — Apify and AI tools to scrape creator profiles, automation to filter the data and drive outreach, and a Replit-built web app to track influencers, budget, and live campaign performance including engagement, likes, and comments.",
+    skills: ["GTM Strategy", "Product Positioning", "AI Automations", "N8N", "Claude AI", "Influencer Marketing", "Apify Scraping", "Replit App Building"],
   },
   {
     year: "Nov 2023 — March 2026",

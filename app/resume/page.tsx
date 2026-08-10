@@ -151,9 +151,9 @@ export default function ResumePage() {
                   <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Leading growth and product marketing post-rebranding from LambdaTest to TestMu AI.</li>
                   <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Directing cross-channel positioning, website restructuring, digital presence alignment, and content strategy.</li>
                   <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built AI-powered automation workflows using N8N, Claude, and Apify for content research, scraping, and template-based image generation.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Own end-to-end influencer marketing, managing a <strong>$1.3M creator budget</strong> from discovery and briefing through to post-campaign reporting.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Scrape, research, and shortlist creators; run outreach, negotiate deliverables, usage rights, and commercials, and onboard influencers across nano, micro, and macro segments.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Produce campaign videos with creators for Instagram, Facebook, X, and LinkedIn, and report effectiveness on reach, engagement, CTR, and follower growth.</li>
+                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Own end-to-end influencer marketing, managing a <strong>$1.3M creator budget</strong> and onboarding <strong>100+ influencers</strong> across LinkedIn, Instagram, YouTube, and X.</li>
+                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Scrape creator profiles at scale using Apify and AI tools, filter the data and run outreach through automation, negotiate deliverables, usage rights, and commercials, and produce campaign videos with creators.</li>
+                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built a web app on Replit to track influencers, budget, and live campaign performance — engagement, likes, and comments — reporting reach, CTR, and follower growth to leadership.</li>
                 </ul>
               </div>
 
@@ -237,7 +237,7 @@ export default function ResumePage() {
               <div>
                 <h3 className="text-sm font-bold mb-2" style={{ color: "var(--foreground)" }}>Influencer & Creator Marketing</h3>
                 <p className="text-sm leading-relaxed" style={{ color: "var(--foreground-secondary)" }}>
-                  End-to-End Campaign Management • Creator Research, Scouting & Outreach • Commercial Negotiation • Creator Onboarding • Influencer Budget Management • Campaign Planning & Content Calendars • Video Content Production • Performance Tracking (Reach, Engagement, CTR, Follower Growth)
+End-to-End Campaign Management • Apify Profile Scraping • Automated Filtering & Outreach • Creator Research & Scouting • Commercial Negotiation • Creator Onboarding (100+) • Influencer Budget Management • Video Content Production • Custom Tracking App (Replit) • Performance Tracking (Reach, Engagement, CTR, Follower Growth, Likes, Comments)
                 </p>
               </div>
               <div>
@@ -264,7 +264,8 @@ export default function ResumePage() {
               Key Achievements
             </h2>
             <ul className="space-y-1.5 text-sm" style={{ color: "var(--foreground-secondary)" }}>
-              <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Managed a $1.3M influencer marketing budget end-to-end across nano, micro, and macro creator segments</li>
+              <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Managed a $1.3M influencer marketing budget and onboarded 100+ influencers across LinkedIn, Instagram, YouTube, and X</li>
+              <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built a Replit web app to track influencers, budget, and live campaign engagement, likes, and comments</li>
               <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built 50+ AI-powered automation workflows for marketing operations</li>
               <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Launched 10+ products with comprehensive go-to-market strategies</li>
               <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built 15+ automated content pipelines reducing manual effort by 70%</li>

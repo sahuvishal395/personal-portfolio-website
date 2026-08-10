@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Influencer Marketing",
-  description: "End-to-end influencer marketing case study by Vishal Kumar Sahu — managing a $1.3M creator budget across nano, micro, and macro segments, covering creator sourcing, outreach, negotiation, onboarding, video production, and performance reporting.",
+  description: "Influencer marketing case study by Vishal Kumar Sahu — a $1.3M creator budget and 100+ influencers onboarded across LinkedIn, Instagram, YouTube, and X, run on a custom stack: Apify profile scraping, automated filtering and outreach, and a Replit-built app for budget and live performance tracking.",
 };
 
 export default function InfluencerMarketingLayout({
