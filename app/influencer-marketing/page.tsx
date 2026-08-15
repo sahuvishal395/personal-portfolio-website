@@ -143,16 +143,7 @@ export default function InfluencerMarketingPage() {
             transition={{ delay: 0.1 }}
             className="flex items-center gap-2 mb-4"
           >
-            <span
-              className="h-px flex-1 max-w-[40px]"
-              style={{ background: "var(--accent)" }}
-            />
-            <span
-              className="text-xs font-semibold uppercase tracking-wider"
-              style={{ color: "var(--accent)" }}
-            >
-              Case Study
-            </span>
+            <span className="eyebrow">Case Study</span>
           </motion.div>
 
           <motion.h1
