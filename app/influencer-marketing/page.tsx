@@ -213,7 +213,7 @@ export default function InfluencerMarketingPage() {
             <div key={m.label} className="glass-card p-5">
               <div
                 className="text-2xl sm:text-3xl font-bold mb-1"
-                style={{ color: "var(--accent)" }}
+                style={{ color: "var(--foreground)" }}
               >
                 {m.value}
               </div>

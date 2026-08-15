@@ -62,7 +62,8 @@ export default function Home() {
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
       {/* ─────────── Hero ─────────── */}
-      <section className="mb-16 sm:mb-24">
+      <section className="mb-16 sm:mb-24 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center">
+        <div>
         <motion.div
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
@@ -164,45 +165,46 @@ export default function Home() {
             <Mail size={16} /> Get in Touch
           </Link>
         </motion.div>
-      </section>
+        </div>
 
-      {/* ─────────── Stat Strip ─────────── */}
-      <motion.section
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.85, duration: 0.5 }}
-        className="mb-16 sm:mb-24"
-        id="stats-card"
-      >
-        <div className="flex items-center gap-2 mb-5">
-          <TrendingUp size={15} style={{ color: "var(--accent)" }} />
-          <span className="eyebrow">Key Numbers</span>
-        </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {stats.map((stat, i) => (
-            <motion.div
-              key={stat.label}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9 + i * 0.08, duration: 0.4 }}
-              className="glass-card p-5"
-            >
-              <div
-                className="text-3xl sm:text-4xl font-extrabold mb-1"
-                style={{ color: "var(--accent)" }}
+        {/* Key Numbers — fills the hero's right column */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.85, duration: 0.55 }}
+          className="glass-card p-6 sm:p-8"
+          id="stats-card"
+        >
+          <div className="flex items-center gap-2 mb-6">
+            <TrendingUp size={15} style={{ color: "var(--accent)" }} />
+            <span className="eyebrow">Key Numbers</span>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-6 lg:gap-5">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, x: 12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.95 + i * 0.09, duration: 0.4 }}
+                className="lg:flex lg:items-baseline lg:gap-3"
               >
-                {stat.value}
-              </div>
-              <div
-                className="text-xs font-medium leading-snug"
-                style={{ color: "var(--foreground-muted)" }}
-              >
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </motion.section>
+                <div
+                  className="text-3xl sm:text-4xl font-extrabold leading-none lg:min-w-[5.5rem]"
+                  style={{ color: "var(--foreground)" }}
+                >
+                  {stat.value}
+                </div>
+                <div
+                  className="text-xs font-medium leading-snug mt-1 lg:mt-0"
+                  style={{ color: "var(--foreground-muted)" }}
+                >
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
 
       {/* ─────────── Featured Work — Influencer Case Study ─────────── */}
       <motion.section
@@ -259,7 +261,7 @@ export default function Home() {
                   <div key={s.l}>
                     <div
                       className="text-xl sm:text-2xl font-extrabold"
-                      style={{ color: "var(--accent)" }}
+                      style={{ color: "var(--foreground)" }}
                     >
                       {s.v}
                     </div>
