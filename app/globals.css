@@ -111,7 +111,23 @@
 }
 
 /* ─── Base ─── */
-* {
+/* Theme-switch easing. Scoped to elements that actually change colour —
+   a universal `*` selector forces the browser to track transition state on
+   every node in the document, including ones that never change. */
+body,
+header,
+nav,
+footer,
+section,
+a,
+button,
+h1, h2, h3, h4,
+p, li, span,
+svg,
+.glass-card,
+.panel-card,
+.nav-glass,
+.tag-pill {
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.2s ease;
 }
 
@@ -197,7 +213,12 @@ body {
   content: '';
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
+  /* 64px instead of 100px — blur cost scales with radius and the visual
+     difference at this size is negligible. */
+  filter: blur(64px);
+  /* Promote to its own compositor layer so the blurred result is cached as a
+     texture and the animation only moves it. */
+  will-change: transform;
   animation: meshFloat 20s ease-in-out infinite;
 }
 
@@ -225,24 +246,27 @@ body {
   height: 400px;
   background: var(--gradient-3);
   border-radius: 50%;
-  filter: blur(100px);
+  filter: blur(64px);
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+  will-change: transform;
   animation: meshFloat2 25s ease-in-out infinite;
 }
 
+/* Translate only — no scale(). Scaling a blurred element forces the blur to
+   be recomputed on every frame; translating one just moves a cached layer. */
 @keyframes meshFloat {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(50px, 30px) scale(1.1); }
-  50% { transform: translate(-30px, 60px) scale(0.95); }
-  75% { transform: translate(40px, -20px) scale(1.05); }
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(50px, 30px, 0); }
+  50% { transform: translate3d(-30px, 60px, 0); }
+  75% { transform: translate3d(40px, -20px, 0); }
 }
 
 @keyframes meshFloat2 {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  33% { transform: translate(-40%, -60%) scale(1.15); }
-  66% { transform: translate(-60%, -40%) scale(0.9); }
+  0%, 100% { transform: translate(-50%, -50%) translate3d(0, 0, 0); }
+  33% { transform: translate(-50%, -50%) translate3d(40px, -70px, 0); }
+  66% { transform: translate(-50%, -50%) translate3d(-45px, 45px, 0); }
 }
 
 /* ─── Glass Card ─── */
@@ -253,12 +277,16 @@ body {
   background-repeat: no-repeat;
   background-position: right -12px bottom -12px;
   background-size: 124px 124px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--card-border);
   border-radius: 14px;
   box-shadow: var(--card-shadow);
-  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-color 0.3s ease,
+              background-size 0.35s ease,
+              border-color 0.3s ease;
   overflow: hidden;
 }
 
@@ -426,10 +454,15 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
   height: 3px;
   background: linear-gradient(90deg, var(--gradient-1), var(--gradient-3));
   z-index: 100;
-  transition: width 0.1s ease-out;
+  /* Driven by scaleX from scroll position. Setting `width` on every scroll
+     event forces a layout pass per frame; a transform is composited. */
+  transform-origin: left;
+  will-change: transform;
+  transition: transform 0.1s ease-out;
 }
 
 /* ─── Tag Pill ─── */
@@ -445,7 +478,7 @@ body {
   background: var(--background-secondary);
   color: var(--pill-text);
   border: 1px solid var(--border);
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .tag-pill:hover {
@@ -467,15 +500,19 @@ body {
   position: absolute;
   bottom: -2px;
   left: 0;
-  width: 0;
+  width: 100%;
   height: 2px;
-  background: var(--accent);
+  background: var(--accent-strong);
   border-radius: 1px;
-  transition: width 0.3s ease;
+  /* scaleX rather than animating width — width forces a layout pass on every
+     frame of the hover, transform is composited. */
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
 }
 
 .link-hover:hover::after {
-  width: 100%;
+  transform: scaleX(1);
 }
 
 /* ─── Prose (Blog article styling) ─── */

@@ -109,7 +109,7 @@ export default function BlogPostClient({ post }: Props) {
       {/* Reading Progress Bar */}
       <div
         className="reading-progress"
-        style={{ width: `${readProgress}%` }}
+        style={{ transform: `scaleX(${readProgress / 100})` }}
       />
 
       <motion.div

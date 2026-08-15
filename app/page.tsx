@@ -234,9 +234,14 @@ export default function Home() {
                   style={{ color: "var(--foreground-secondary)" }}
                 >
                   A $1.3M creator budget and 100+ influencers onboarded across
-                  LinkedIn, Instagram, YouTube, and X — run on tooling I built:
-                  Apify profile scraping, automated filtering and outreach, and
-                  a Replit app tracking budget and live performance.
+                  LinkedIn, Instagram, YouTube, and X.
+                  <br className="hidden sm:block" />
+                  <span className="inline-block mt-2">
+                    Running that volume by hand was never going to work, so I
+                    built the tooling myself: Apify for profile scraping,
+                    automation for filtering and outreach, and a Replit app
+                    tracking budget and live performance.
+                  </span>
                 </p>
                 <span
                   className="inline-flex items-center gap-1.5 text-sm font-semibold"
