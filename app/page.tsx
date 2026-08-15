@@ -1,6 +1,5 @@
 "use client";
 
-import BentoCard from "./components/BentoCard";
 import TypewriterText from "./components/TypewriterText";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -10,6 +9,7 @@ import {
   Briefcase,
   Mail,
   Sparkles,
+  Target,
   TrendingUp,
   Zap,
 } from "lucide-react";
@@ -39,206 +39,301 @@ const skillMarquee = [
   "Prompt Engineering",
 ];
 
+const quickLinks = [
+  {
+    href: "/about",
+    icon: Briefcase,
+    label: "About",
+    body: "3+ years across GTM strategy, influencer marketing, and AI automation.",
+    cta: "Learn more",
+  },
+  {
+    href: "/reading-list",
+    icon: BookOpen,
+    label: "Reading List",
+    body: "Obviously Awesome · Zero to One · Made to Stick",
+    cta: "View all",
+  },
+];
+
 export default function Home() {
   const featuredPost = getFeaturedPost();
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-      {/* Bento Grid Layout */}
-      <div className="bento-grid">
-        {/* ─── Hero Card (spans 3 cols, 2 rows) ─── */}
-        <BentoCard span={3} rowSpan={2} delay={0} id="hero-card">
-          <div className="flex flex-col justify-between h-full min-h-[280px]">
-            <div>
-              <motion.div
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2, duration: 0.5 }}
-                className="flex items-center gap-2 mb-4"
-              >
-                <span
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium"
-                  style={{
-                    background: "var(--accent-light)",
-                    color: "var(--accent)",
-                  }}
-                >
-                  <span
-                    className="w-2 h-2 rounded-full animate-pulse"
-                    style={{ background: "var(--accent)" }}
-                  />
-                  Available for opportunities
-                </span>
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-4"
-                style={{ color: "var(--foreground)" }}
-              >
-                Hi, I&apos;m{" "}
-                <span
-                  style={{
-                    background:
-                      "linear-gradient(135deg, var(--gradient-1), var(--gradient-2))",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  Vishal
-                </span>
-              </motion.h1>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="text-xl sm:text-2xl font-medium mb-6"
-                style={{ color: "var(--foreground-secondary)" }}
-              >
-                <TypewriterText
-                  strings={[
-                    "Growth & Product Marketing Lead",
-                    "GTM Strategist",
-                    "AI-Powered Marketer",
-                    "Marketing Thinker",
-                  ]}
-                />
-              </motion.div>
-
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-                className="text-base max-w-lg leading-relaxed"
-                style={{ color: "var(--foreground-secondary)" }}
-              >
-                I craft compelling narratives that bridge the gap between
-                products and people. Specializing in go-to-market strategy,
-                positioning, and building marketing engines that drive outcomes.
-              </motion.p>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.9, duration: 0.5 }}
-              className="flex flex-wrap gap-3 mt-6"
-            >
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-white transition-all duration-200 hover:scale-105 hover:shadow-lg"
-                style={{
-                  background:
-                    "linear-gradient(135deg, var(--gradient-1), var(--gradient-2))",
-                }}
-                id="cta-about"
-              >
-                About Me <ArrowRight size={16} />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105"
-                style={{
-                  color: "var(--accent)",
-                  border: "1px solid var(--accent)",
-                  background: "transparent",
-                }}
-                id="cta-contact"
-              >
-                <Mail size={16} /> Get in Touch
-              </Link>
-            </motion.div>
-          </div>
-        </BentoCard>
-
-        {/* ─── Stats Card ─── */}
-        <BentoCard span={1} rowSpan={2} delay={0.15} id="stats-card">
-          <div className="flex flex-col h-full justify-between">
-            <div className="flex items-center gap-2 mb-4">
-              <TrendingUp size={16} style={{ color: "var(--accent)" }} />
-              <span
-                className="text-xs font-semibold uppercase tracking-wider"
-                style={{ color: "var(--foreground-muted)" }}
-              >
-                Key Numbers
-              </span>
-            </div>
-            <div className="space-y-5">
-              {stats.map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, x: 10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }}
-                >
-                  <div
-                    className="text-2xl sm:text-3xl font-bold"
-                    style={{ color: "var(--accent)" }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div
-                    className="text-xs font-medium"
-                    style={{ color: "var(--foreground-muted)" }}
-                  >
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </BentoCard>
-
-        {/* ─── Skills Marquee Card (spans 2) ─── */}
-        <BentoCard span={2} delay={0.25} id="skills-card">
-          <div className="flex items-center gap-2 mb-4">
-            <Zap size={16} style={{ color: "var(--accent)" }} />
+      {/* ─────────── Hero ─────────── */}
+      <section className="mb-16 sm:mb-24 grid lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center">
+        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.15, duration: 0.5 }}
+          className="mb-6"
+        >
+          <span
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-md text-xs font-semibold"
+            style={{
+              background: "var(--accent-light)",
+              color: "var(--accent)",
+            }}
+          >
             <span
-              className="text-xs font-semibold uppercase tracking-wider"
-              style={{ color: "var(--foreground-muted)" }}
-            >
-              Skills & Expertise
-            </span>
-          </div>
-          <div className="marquee-container py-2">
-            <div className="marquee-track">
-              {[...skillMarquee, ...skillMarquee].map((skill, i) => (
-                <span
-                  key={i}
-                  className="tag-pill whitespace-nowrap"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-        </BentoCard>
+              className="w-2 h-2 rounded-full animate-pulse"
+              style={{ background: "var(--accent)" }}
+            />
+            Available for opportunities
+          </span>
+        </motion.div>
 
-        {/* ─── Featured Blog Card (spans 2) ─── */}
-        {featuredPost && (
-          <BentoCard span={2} delay={0.3} id="featured-blog-card">
-            <Link href={`/blogs/${featuredPost.slug}`} className="block group">
-              <div className="flex items-center gap-2 mb-3">
-                <Sparkles size={16} style={{ color: "var(--accent)" }} />
-                <span
-                  className="text-xs font-semibold uppercase tracking-wider"
+        <motion.h1
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.25, duration: 0.6 }}
+          className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.05] mb-5"
+          style={{ color: "var(--foreground)" }}
+        >
+          Hi, I&apos;m{" "}
+          <span
+            style={{
+              background:
+                "linear-gradient(120deg, var(--gradient-1), var(--gradient-3))",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+            }}
+          >
+            Vishal
+          </span>
+        </motion.h1>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.45, duration: 0.5 }}
+          className="text-xl sm:text-3xl font-semibold mb-6"
+          style={{ color: "var(--foreground-secondary)" }}
+        >
+          <TypewriterText
+            strings={[
+              "Growth & Product Marketing Lead",
+              "GTM Strategist",
+              "AI-Powered Marketer",
+              "Marketing Thinker",
+            ]}
+          />
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="text-base sm:text-lg max-w-2xl leading-relaxed mb-8"
+          style={{ color: "var(--foreground-secondary)" }}
+        >
+          I craft compelling narratives that bridge the gap between products and
+          people. Specializing in go-to-market strategy, positioning, and
+          building marketing engines that drive outcomes.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.75, duration: 0.5 }}
+          className="flex flex-wrap gap-3"
+        >
+          <Link
+            href="/about"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:scale-105 hover:shadow-lg"
+            style={{
+              background:
+                "linear-gradient(135deg, var(--gradient-1), var(--gradient-3))",
+            }}
+            id="cta-about"
+          >
+            About Me <ArrowRight size={16} />
+          </Link>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold transition-all duration-200 hover:scale-105"
+            style={{
+              color: "var(--accent)",
+              border: "2px solid var(--accent)",
+              background: "transparent",
+            }}
+            id="cta-contact"
+          >
+            <Mail size={16} /> Get in Touch
+          </Link>
+        </motion.div>
+        </div>
+
+        {/* Key Numbers — fills the hero's right column */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.85, duration: 0.55 }}
+          className="glass-card p-6 sm:p-8"
+          id="stats-card"
+        >
+          <div className="flex items-center gap-2 mb-6">
+            <TrendingUp size={15} style={{ color: "var(--accent)" }} />
+            <span className="eyebrow">Key Numbers</span>
+          </div>
+          <div className="grid grid-cols-2 lg:grid-cols-1 gap-6 lg:gap-5">
+            {stats.map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, x: 12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.95 + i * 0.09, duration: 0.4 }}
+                className="lg:flex lg:items-baseline lg:gap-3"
+              >
+                <div
+                  className="text-3xl sm:text-4xl font-extrabold leading-none lg:min-w-[5.5rem]"
+                  style={{ color: "var(--foreground)" }}
+                >
+                  {stat.value}
+                </div>
+                <div
+                  className="text-xs font-medium leading-snug mt-1 lg:mt-0"
                   style={{ color: "var(--foreground-muted)" }}
                 >
-                  Featured Post
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* ─────────── Featured Work — Influencer Case Study ─────────── */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5 }}
+        className="mb-16 sm:mb-24"
+      >
+        <div className="flex items-center gap-2 mb-5">
+          <Target size={15} style={{ color: "var(--accent)" }} />
+          <span className="eyebrow">Featured Work</span>
+        </div>
+
+        <Link href="/influencer-marketing" className="block group">
+          <div className="panel-card p-6 sm:p-8">
+            <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+              <div className="flex-1">
+                <h2
+                  className="text-2xl sm:text-3xl font-extrabold mb-3 tracking-tight"
+                  style={{ color: "var(--foreground)" }}
+                >
+                  Influencer Marketing at Scale
+                </h2>
+                <p
+                  className="text-sm sm:text-base leading-relaxed mb-5"
+                  style={{ color: "var(--foreground-secondary)" }}
+                >
+                  A $1.3M creator budget and 100+ influencers onboarded across
+                  LinkedIn, Instagram, YouTube, and X.
+                  <br className="hidden sm:block" />
+                  <span className="inline-block mt-2">
+                    Running that volume by hand was never going to work, so I
+                    built the tooling myself: Apify for profile scraping,
+                    automation for filtering and outreach, and a Replit app
+                    tracking budget and live performance.
+                  </span>
+                </p>
+                <span
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold"
+                  style={{ color: "var(--accent)" }}
+                >
+                  Read the case study
+                  <ArrowRight
+                    size={15}
+                    className="transition-transform duration-200 group-hover:translate-x-1"
+                  />
                 </span>
               </div>
+
+              <div className="flex lg:flex-col gap-4 lg:gap-3 lg:pl-8 lg:border-l lg:min-w-[150px]"
+                style={{ borderColor: "var(--border)" }}
+              >
+                {[
+                  { v: "$1.3M", l: "Budget" },
+                  { v: "100+", l: "Creators" },
+                  { v: "4", l: "Platforms" },
+                ].map((s) => (
+                  <div key={s.l}>
+                    <div
+                      className="text-xl sm:text-2xl font-extrabold"
+                      style={{ color: "var(--foreground)" }}
+                    >
+                      {s.v}
+                    </div>
+                    <div
+                      className="text-xs"
+                      style={{ color: "var(--foreground-muted)" }}
+                    >
+                      {s.l}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </Link>
+      </motion.section>
+
+      {/* ─────────── Skills Marquee ─────────── */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="mb-16 sm:mb-24"
+        id="skills-card"
+      >
+        <div className="flex items-center gap-2 mb-5">
+          <Zap size={15} style={{ color: "var(--accent)" }} />
+          <span className="eyebrow">Skills &amp; Expertise</span>
+        </div>
+        <div className="marquee-container py-2">
+          <div className="marquee-track">
+            {[...skillMarquee, ...skillMarquee].map((skill, i) => (
+              <span key={i} className="tag-pill whitespace-nowrap">
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      </motion.section>
+
+      <hr className="web-divider" />
+
+      {/* ─────────── Featured Post + Quick Links ─────────── */}
+      <section className="grid md:grid-cols-3 gap-4 mb-16">
+        {featuredPost && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="glass-card p-6 md:col-span-1"
+            id="featured-blog-card"
+          >
+            <Link href={`/blogs/${featuredPost.slug}`} className="block group">
+              <div className="flex items-center gap-2 mb-3">
+                <Sparkles size={15} style={{ color: "var(--accent)" }} />
+                <span className="eyebrow">Featured Post</span>
+              </div>
               <h3
-                className="text-lg font-bold mb-2 group-hover:text-accent transition-colors duration-200"
+                className="text-lg font-bold mb-2 transition-colors duration-200"
                 style={{ color: "var(--foreground)" }}
               >
                 {featuredPost.title}
               </h3>
               <p
-                className="text-sm leading-relaxed mb-3 line-clamp-2"
+                className="text-sm leading-relaxed mb-3 line-clamp-3"
                 style={{ color: "var(--foreground-secondary)" }}
               >
                 {featuredPost.excerpt}
@@ -251,116 +346,87 @@ export default function Home() {
                   {featuredPost.readingTime}
                 </span>
                 <span
-                  className="inline-flex items-center gap-1 text-xs font-medium link-hover"
+                  className="inline-flex items-center gap-1 text-xs font-semibold link-hover"
                   style={{ color: "var(--accent)" }}
                 >
                   Read Article <ArrowRight size={12} />
                 </span>
               </div>
             </Link>
-          </BentoCard>
+          </motion.div>
         )}
 
-        {/* ─── About Preview Card ─── */}
-        <BentoCard span={1} delay={0.35} id="about-preview-card">
-          <Link href="/about" className="block group">
-            <div className="flex items-center gap-2 mb-3">
-              <Briefcase size={16} style={{ color: "var(--accent)" }} />
-              <span
-                className="text-xs font-semibold uppercase tracking-wider"
-                style={{ color: "var(--foreground-muted)" }}
-              >
-                About
-              </span>
-            </div>
+        {quickLinks.map((q, i) => {
+          const Icon = q.icon;
+          return (
+            <motion.div
+              key={q.href}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
+              className="glass-card p-6"
+            >
+              <Link href={q.href} className="block group">
+                <div className="flex items-center gap-2 mb-3">
+                  <Icon size={15} style={{ color: "var(--accent)" }} />
+                  <span className="eyebrow">{q.label}</span>
+                </div>
+                <p
+                  className="text-sm leading-relaxed mb-4"
+                  style={{ color: "var(--foreground-secondary)" }}
+                >
+                  {q.body}
+                </p>
+                <span
+                  className="inline-flex items-center gap-1 text-xs font-semibold link-hover"
+                  style={{ color: "var(--accent)" }}
+                >
+                  {q.cta} <ArrowRight size={12} />
+                </span>
+              </Link>
+            </motion.div>
+          );
+        })}
+      </section>
+
+      {/* ─────────── Contact CTA ─────────── */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="glass-card p-6 sm:p-10"
+        id="contact-cta-card"
+      >
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+          <div>
+            <h3
+              className="text-2xl font-extrabold mb-2 tracking-tight"
+              style={{ color: "var(--foreground)" }}
+            >
+              Let&apos;s work together
+            </h3>
             <p
-              className="text-sm leading-relaxed mb-4"
+              className="text-sm"
               style={{ color: "var(--foreground-secondary)" }}
             >
-              Growth & Product Marketing Lead with 3+ years of experience in GTM
-              strategy, influencer marketing, and AI automation — including a
-              $1.3M creator budget managed end-to-end.
+              Have a project in mind? I&apos;d love to hear about it.
             </p>
-            <span
-              className="inline-flex items-center gap-1 text-xs font-medium link-hover"
-              style={{ color: "var(--accent)" }}
-            >
-              Learn more <ArrowRight size={12} />
-            </span>
-          </Link>
-        </BentoCard>
-
-        {/* ─── Reading List Preview Card ─── */}
-        <BentoCard span={1} delay={0.4} id="reading-preview-card">
-          <Link href="/reading-list" className="block group">
-            <div className="flex items-center gap-2 mb-3">
-              <BookOpen size={16} style={{ color: "var(--accent)" }} />
-              <span
-                className="text-xs font-semibold uppercase tracking-wider"
-                style={{ color: "var(--foreground-muted)" }}
-              >
-                Reading List
-              </span>
-            </div>
-            <div className="space-y-2 mb-4">
-              {["Obviously Awesome", "Zero to One", "Made to Stick"].map(
-                (book) => (
-                  <div
-                    key={book}
-                    className="flex items-center gap-2 text-sm"
-                    style={{ color: "var(--foreground-secondary)" }}
-                  >
-                    <span
-                      className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                      style={{ background: "var(--accent)" }}
-                    />
-                    {book}
-                  </div>
-                )
-              )}
-            </div>
-            <span
-              className="inline-flex items-center gap-1 text-xs font-medium link-hover"
-              style={{ color: "var(--accent)" }}
-            >
-              View all <ArrowRight size={12} />
-            </span>
-          </Link>
-        </BentoCard>
-
-        {/* ─── Contact CTA Card (spans 2) ─── */}
-        <BentoCard span={2} delay={0.45} id="contact-cta-card">
-          <div
-            className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
-          >
-            <div>
-              <h3
-                className="text-lg font-bold mb-1"
-                style={{ color: "var(--foreground)" }}
-              >
-                Let&apos;s work together
-              </h3>
-              <p
-                className="text-sm"
-                style={{ color: "var(--foreground-secondary)" }}
-              >
-                Have a project in mind? I&apos;d love to hear about it.
-              </p>
-            </div>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-white transition-all duration-200 hover:scale-105 hover:shadow-lg flex-shrink-0"
-              style={{
-                background:
-                  "linear-gradient(135deg, var(--gradient-1), var(--gradient-2))",
-              }}
-              id="cta-contact-bottom"
-            >
-              <Mail size={16} /> Say Hello
-            </Link>
           </div>
-        </BentoCard>
-      </div>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-sm font-semibold text-white transition-all duration-200 hover:scale-105 hover:shadow-lg flex-shrink-0"
+            style={{
+              background:
+                "linear-gradient(135deg, var(--gradient-1), var(--gradient-3))",
+            }}
+            id="cta-contact-bottom"
+          >
+            <Mail size={16} /> Say Hello
+          </Link>
+        </div>
+      </motion.section>
     </div>
   );
 }

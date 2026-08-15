@@ -143,16 +143,7 @@ export default function InfluencerMarketingPage() {
             transition={{ delay: 0.1 }}
             className="flex items-center gap-2 mb-4"
           >
-            <span
-              className="h-px flex-1 max-w-[40px]"
-              style={{ background: "var(--accent)" }}
-            />
-            <span
-              className="text-xs font-semibold uppercase tracking-wider"
-              style={{ color: "var(--accent)" }}
-            >
-              Case Study
-            </span>
+            <span className="eyebrow">Case Study</span>
           </motion.div>
 
           <motion.h1
@@ -202,12 +193,21 @@ export default function InfluencerMarketingPage() {
             <strong style={{ color: "var(--foreground)", fontWeight: 600 }}>
               100+ influencers onboarded
             </strong>{" "}
-            across LinkedIn, Instagram, YouTube, and X. Running that volume
-            manually was never going to work, so I built the tooling to do it:
-            scraping creator profiles with Apify, filtering and reaching out
-            through automation, and tracking every influencer, the budget
-            against spend, and live campaign performance in a web app I built
-            on Replit.
+            across LinkedIn, Instagram, YouTube, and X.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.45 }}
+            className="text-base leading-relaxed mt-4"
+            style={{ color: "var(--foreground-secondary)" }}
+          >
+            Running that volume by hand was never going to work. So I built the
+            tooling: Apify to scrape creator profiles, automation to filter the
+            results and drive outreach, and a web app on Replit that tracks
+            every influencer, budget against spend, and live campaign
+            performance.
           </motion.p>
         </div>
 
@@ -222,7 +222,7 @@ export default function InfluencerMarketingPage() {
             <div key={m.label} className="glass-card p-5">
               <div
                 className="text-2xl sm:text-3xl font-bold mb-1"
-                style={{ color: "var(--accent)" }}
+                style={{ color: "var(--foreground)" }}
               >
                 {m.value}
               </div>

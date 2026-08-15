@@ -33,16 +33,7 @@ export default function AboutPage() {
             transition={{ delay: 0.1 }}
             className="flex items-center gap-2 mb-4"
           >
-            <span
-              className="h-px flex-1 max-w-[40px]"
-              style={{ background: "var(--accent)" }}
-            />
-            <span
-              className="text-xs font-semibold uppercase tracking-wider"
-              style={{ color: "var(--accent)" }}
-            >
-              About Me
-            </span>
+            <span className="eyebrow">About Me</span>
           </motion.div>
 
           <motion.h1
