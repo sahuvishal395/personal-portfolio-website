@@ -1,310 +1,452 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import PageTransition from "../components/PageTransition";
 import { motion } from "framer-motion";
-import { Download, Mail, MapPin, Globe, Briefcase } from "lucide-react";
+import { Download, Globe, Mail, MapPin, Printer } from "lucide-react";
+import {
+  bio,
+  coursework,
+  education,
+  skillGroups,
+  timeline,
+} from "../data/about";
+import { site } from "../data/site";
 
-function LinkedinIcon({ size = 16 }: { size?: number }) {
+// Summary as it reads on the CV.
+const summary =
+  "SEO specialist with 3.5+ years at TestMu AI (formerly LambdaTest), a B2B software testing platform, where I've grown from the fundamentals of technical SEO, keyword research, content and link building into what search is becoming. I also focus on GEO/AEO, making sure the brand is cited when buyers ask ChatGPT, Perplexity and Gemini for answers. My approach is the same across both: use Search Console, Ahrefs and Semrush to find where demand is going unmet, then build pages that rank, get cited and convert.";
+
+// Work history in CV order. Kraftshala is training, so it is listed under
+// Education & Certifications, as on the CV. The CV gives the bare job title,
+// so drop the focus area the About page adds after " · ".
+const experience = timeline
+  .filter((entry) => entry.kind === "work")
+  .map((entry) => ({ ...entry, role: entry.role.split(" · ")[0] }));
+
+const websiteLabel = site.url.replace(/^https?:\/\//, "");
+
+const iconStyle: CSSProperties = { color: "var(--accent)" };
+
+type IconProps = { size?: number; className?: string; style?: CSSProperties };
+
+function LinkedinIcon({ size = 16, className, style }: IconProps) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-      <rect width="4" height="12" x="2" y="9"/>
-      <circle cx="4" cy="4" r="2"/>
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      style={style}
+      aria-hidden="true"
+    >
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect width="4" height="12" x="2" y="9" />
+      <circle cx="4" cy="4" r="2" />
     </svg>
   );
 }
 
-function GithubIcon({ size = 16 }: { size?: number }) {
+function GithubIcon({ size = 16, className, style }: IconProps) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      style={style}
+      aria-hidden="true"
+    >
+      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
     </svg>
+  );
+}
+
+function ContactItem({
+  icon,
+  href,
+  external = false,
+  children,
+}: {
+  icon: ReactNode;
+  href?: string;
+  external?: boolean;
+  children: ReactNode;
+}) {
+  const content = (
+    <>
+      {icon}
+      <span className="min-w-0 wrap-anywhere">{children}</span>
+    </>
+  );
+
+  if (!href) {
+    return (
+      <span className="inline-flex items-center gap-1.5 min-w-0">
+        {content}
+      </span>
+    );
+  }
+
+  return (
+    <a
+      href={href}
+      className="inline-flex items-center gap-1.5 min-w-0 hover:text-accent"
+      {...(external
+        ? { target: "_blank", rel: "me noopener noreferrer" }
+        : {})}
+    >
+      {content}
+    </a>
+  );
+}
+
+function ResumeSection({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="mb-8 last:mb-0">
+      <h2
+        className="text-base sm:text-lg font-bold uppercase tracking-wider mb-3 pb-1"
+        style={{
+          color: "var(--foreground)",
+          borderBottom: "1px solid var(--border)",
+        }}
+      >
+        {title}
+      </h2>
+      {children}
+    </section>
+  );
+}
+
+function Bullet({ children }: { children: ReactNode }) {
+  return (
+    <li className="flex gap-2 leading-relaxed">
+      <span
+        aria-hidden="true"
+        className="shrink-0"
+        style={{ color: "var(--accent)" }}
+      >
+        •
+      </span>
+      <span className="min-w-0">{children}</span>
+    </li>
   );
 }
 
 export default function ResumePage() {
-  const resumeRef = useRef<HTMLDivElement>(null);
-
   const handlePrint = () => {
     window.print();
   };
 
   return (
     <PageTransition>
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+      <div className="resume-page max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
         {/* Download Bar */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="flex items-center justify-between mb-8 print-hide"
+          className="print-hide flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8"
         >
           <div>
-            <h1
-              className="text-2xl font-bold"
-              style={{ color: "var(--foreground)" }}
-            >
-              Resume
-            </h1>
+            <span className="eyebrow">Resume</span>
             <p
-              className="text-sm mt-1"
+              className="text-sm mt-2"
               style={{ color: "var(--foreground-secondary)" }}
             >
-              Use the button below to save as PDF
+              Save this page as a PDF, or download the PDF version of my CV.
             </p>
           </div>
-          <button
-            onClick={handlePrint}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium text-white transition-all duration-200 hover:scale-105 hover:shadow-lg"
-            style={{
-              background:
-                "linear-gradient(135deg, var(--gradient-1), var(--gradient-2))",
-            }}
-            id="resume-print-btn"
-          >
-            <Download size={16} /> Save as PDF
-          </button>
+          <div className="flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={handlePrint}
+              className="inline-flex items-center justify-center gap-2 min-h-11 px-5 py-2.5 rounded-xl text-sm font-medium text-white transition-all duration-200 hover:scale-105 hover:shadow-lg"
+              style={{
+                background:
+                  "linear-gradient(135deg, var(--gradient-1), var(--gradient-2))",
+              }}
+              id="resume-print-btn"
+            >
+              <Printer size={16} aria-hidden="true" /> Save as PDF
+            </button>
+            <a
+              href={site.resumePdf}
+              download
+              className="inline-flex items-center justify-center gap-2 min-h-11 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-105"
+              style={{
+                color: "var(--accent)",
+                border: "2px solid var(--accent)",
+              }}
+              id="resume-pdf-download"
+            >
+              <Download size={16} aria-hidden="true" /> Download PDF
+            </a>
+          </div>
         </motion.div>
 
         {/* Resume Content */}
         <motion.div
-          ref={resumeRef}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="glass-card p-8 sm:p-10 resume-content"
+          className="glass-card resume-content p-5 sm:p-10"
           id="resume-printable"
         >
           {/* Header */}
-          <div className="text-center mb-8 pb-6" style={{ borderBottom: "2px solid var(--accent)" }}>
+          <header
+            className="text-center mb-8 pb-6"
+            style={{ borderBottom: "2px solid var(--accent-strong)" }}
+          >
             <h1
               className="text-3xl sm:text-4xl font-bold tracking-tight mb-2"
               style={{ color: "var(--foreground)" }}
             >
-              Vishal Kumar Sahu
+              {site.name}
             </h1>
             <p
-              className="text-lg font-medium mb-4"
+              className="text-base sm:text-lg font-medium mb-4"
               style={{ color: "var(--accent)" }}
             >
-              Growth & Product Marketing Lead
+              {bio.title}
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 text-sm" style={{ color: "var(--foreground-secondary)" }}>
-              <span className="inline-flex items-center gap-1.5">
-                <Mail size={14} style={{ color: "var(--accent)" }} />
-                sahuvishal395@gmail.com
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <MapPin size={14} style={{ color: "var(--accent)" }} />
-                India
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Globe size={14} style={{ color: "var(--accent)" }} />
-                www.vishalkumarsahu.com
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <LinkedinIcon size={14} />
-                linkedin.com/in/vishal-sahu-a56526238
-              </span>
-              <span className="inline-flex items-center gap-1.5">
-                <GithubIcon size={14} />
-                github.com/sahuvishal395
-              </span>
-            </div>
-          </div>
-
-          {/* Professional Summary */}
-          <div className="mb-8">
-            <h2
-              className="text-lg font-bold uppercase tracking-wider mb-3 pb-1"
-              style={{ color: "var(--foreground)", borderBottom: "1px solid var(--border)" }}
+            <address
+              className="not-italic flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm"
+              style={{ color: "var(--foreground-secondary)" }}
             >
-              Professional Summary
-            </h2>
+              <ContactItem
+                href={`mailto:${site.email}`}
+                icon={
+                  <Mail
+                    size={14}
+                    className="shrink-0"
+                    style={iconStyle}
+                    aria-hidden="true"
+                  />
+                }
+              >
+                {site.email}
+              </ContactItem>
+              <ContactItem
+                icon={
+                  <MapPin
+                    size={14}
+                    className="shrink-0"
+                    style={iconStyle}
+                    aria-hidden="true"
+                  />
+                }
+              >
+                {site.location}
+              </ContactItem>
+              <ContactItem
+                href={site.url}
+                icon={
+                  <Globe
+                    size={14}
+                    className="shrink-0"
+                    style={iconStyle}
+                    aria-hidden="true"
+                  />
+                }
+              >
+                {websiteLabel}
+              </ContactItem>
+              <ContactItem
+                href={site.linkedin}
+                external
+                icon={
+                  <LinkedinIcon size={14} className="shrink-0" style={iconStyle} />
+                }
+              >
+                linkedin.com{site.linkedinHandle}
+              </ContactItem>
+              <ContactItem
+                href={site.github}
+                external
+                icon={
+                  <GithubIcon size={14} className="shrink-0" style={iconStyle} />
+                }
+              >
+                github.com{site.githubHandle}
+              </ContactItem>
+            </address>
+          </header>
+
+          <ResumeSection title="Summary">
             <p
               className="text-sm leading-relaxed"
               style={{ color: "var(--foreground-secondary)" }}
             >
-              Growth & Product Marketing Lead with 3+ years of experience in go-to-market strategy, product positioning, and end-to-end influencer marketing — including a $1.3M creator budget managed across discovery, negotiation, onboarding, video production, and performance reporting. Expert in leveraging tools like N8N, Claude, Replit, and Apify to automate content workflows, research scraping, and template-based image generation at scale. Passionate about bridging the gap between products and people through compelling narratives and data-driven insights.
+              {summary}
             </p>
-          </div>
+          </ResumeSection>
 
-          {/* Experience */}
-          <div className="mb-8">
-            <h2
-              className="text-lg font-bold uppercase tracking-wider mb-4 pb-1"
-              style={{ color: "var(--foreground)", borderBottom: "1px solid var(--border)" }}
-            >
-              Professional Experience
-            </h2>
-
+          <ResumeSection title="Professional Experience">
             <div className="space-y-6">
-              <div>
-                <div className="flex flex-wrap justify-between items-start mb-1">
-                  <h3 className="text-base font-bold" style={{ color: "var(--foreground)" }}>
-                    Growth & Product Marketing Lead
-                  </h3>
-                  <span className="text-xs font-mono" style={{ color: "var(--accent)" }}>March 2026 — Present</span>
+              {experience.map((job) => (
+                <div key={`${job.company}-${job.year}`}>
+                  <div className="resume-keep flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-1">
+                    <h3
+                      className="text-base font-bold"
+                      style={{ color: "var(--foreground)" }}
+                    >
+                      {job.role}
+                    </h3>
+                    <span
+                      className="text-xs font-mono"
+                      style={{ color: "var(--accent)" }}
+                    >
+                      {job.year}
+                    </span>
+                  </div>
+                  <p
+                    className="resume-keep text-sm font-medium mb-2"
+                    style={{ color: "var(--foreground-muted)" }}
+                  >
+                    {job.company}
+                  </p>
+                  {job.highlights && job.highlights.length > 0 && (
+                    <ul
+                      className="space-y-1.5 text-sm"
+                      style={{ color: "var(--foreground-secondary)" }}
+                    >
+                      {job.highlights.map((item) => (
+                        <Bullet key={item}>{item}</Bullet>
+                      ))}
+                    </ul>
+                  )}
                 </div>
-                <p className="text-sm font-medium mb-2" style={{ color: "var(--foreground-muted)" }}>TestMu AI (formerly LambdaTest)</p>
-                <ul className="space-y-1.5 text-sm" style={{ color: "var(--foreground-secondary)" }}>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Leading growth and product marketing post-rebranding from LambdaTest to TestMu AI.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Directing cross-channel positioning, website restructuring, digital presence alignment, and content strategy.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built AI-powered automation workflows using N8N, Claude, and Apify for content research, scraping, and template-based image generation.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Own end-to-end influencer marketing, managing a <strong>$1.3M creator budget</strong> and onboarding <strong>100+ influencers</strong> across LinkedIn, Instagram, YouTube, and X.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Scrape creator profiles at scale using Apify and AI tools, filter the data and run outreach through automation, negotiate deliverables, usage rights, and commercials, and produce campaign videos with creators.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built a web app on Replit to track influencers, budget, and live campaign performance — engagement, likes, and comments — reporting reach, CTR, and follower growth to leadership.</li>
-                </ul>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap justify-between items-start mb-1">
-                  <h3 className="text-base font-bold" style={{ color: "var(--foreground)" }}>
-                    Digital Marketing Executive
-                  </h3>
-                  <span className="text-xs font-mono" style={{ color: "var(--accent)" }}>Nov 2023 — March 2026</span>
-                </div>
-                <p className="text-sm font-medium mb-2" style={{ color: "var(--foreground-muted)" }}>LambdaTest</p>
-                <ul className="space-y-1.5 text-sm" style={{ color: "var(--foreground-secondary)" }}>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Promoted to executive role after 6 months of internship. Managed B2B search, display, and social ad campaigns (Google, Meta, LinkedIn).</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Secured 'Position 0' on search engine result pages (SERPs) and optimized 100+ landing pages to enhance conversions.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Managed Google My Business & Pinterest accounts (achieving 10k+ monthly views) and spearheaded LambdaTest's Product Hunt launch to #1 product.</li>
-                </ul>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap justify-between items-start mb-1">
-                  <h3 className="text-base font-bold" style={{ color: "var(--foreground)" }}>
-                    Digital Marketing Intern
-                  </h3>
-                  <span className="text-xs font-mono" style={{ color: "var(--accent)" }}>May 2023 — Nov 2023</span>
-                </div>
-                <p className="text-sm font-medium mb-2" style={{ color: "var(--foreground-muted)" }}>LambdaTest</p>
-                <ul className="space-y-1.5 text-sm" style={{ color: "var(--foreground-secondary)" }}>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Managed on-page and off-page search engine optimization campaigns.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Optimized 150+ articles and developed 40+ content webpages targeting organic growth.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Nurtured outreach campaigns to secure high-quality authority backlinks and coordinated influencer marketing collaborations.</li>
-                </ul>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap justify-between items-start mb-1">
-                  <h3 className="text-base font-bold" style={{ color: "var(--foreground)" }}>
-                    Digital Marketing Professional Program
-                  </h3>
-                  <span className="text-xs font-mono" style={{ color: "var(--accent)" }}>Sep 2022 — May 2023</span>
-                </div>
-                <p className="text-sm font-medium mb-2" style={{ color: "var(--foreground-muted)" }}>Kraftshala</p>
-                <ul className="space-y-1.5 text-sm" style={{ color: "var(--foreground-secondary)" }}>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Acquired extensive training in marketing strategy, positioning concepts, and user behaviors.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Designed detailed customer personas, user journeys, and full-funnel digital messaging patterns.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Pitched social and digital marketing strategies for prominent brands including MG, TATA, and HCL.</li>
-                </ul>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap justify-between items-start mb-1">
-                  <h3 className="text-base font-bold" style={{ color: "var(--foreground)" }}>
-                    Sales Trainee
-                  </h3>
-                  <span className="text-xs font-mono" style={{ color: "var(--accent)" }}>July 2022 — Sep 2022</span>
-                </div>
-                <p className="text-sm font-medium mb-2" style={{ color: "var(--foreground-muted)" }}>Byju's</p>
-                <ul className="space-y-1.5 text-sm" style={{ color: "var(--foreground-secondary)" }}>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Excelled in customer outreach training, developing deep insight into consumer psychology and personas.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Tackled real-time user concerns and mapped solutions aligned to current market trends.</li>
-                  <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Partnered with the outbound team to generate warm leads and converted two targeted accounts within six weeks.</li>
-                </ul>
-              </div>
+              ))}
             </div>
-          </div>
+          </ResumeSection>
 
-          {/* Skills */}
-          <div className="mb-8">
-            <h2
-              className="text-lg font-bold uppercase tracking-wider mb-3 pb-1"
-              style={{ color: "var(--foreground)", borderBottom: "1px solid var(--border)" }}
+          <ResumeSection title="Skills">
+            <ul
+              className="space-y-1.5 text-sm"
+              style={{ color: "var(--foreground-secondary)" }}
             >
-              Skills & Expertise
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <h3 className="text-sm font-bold mb-2" style={{ color: "var(--foreground)" }}>Marketing & Strategy</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--foreground-secondary)" }}>
-                  Product Positioning • Go-to-Market Strategy • Competitive Intelligence • Sales Enablement • Content Strategy • Customer Research • Market Analysis • Launch Planning • Growth Marketing • Brand Strategy • SEO & SEM
-                </p>
-              </div>
-              <div>
-                <h3 className="text-sm font-bold mb-2" style={{ color: "var(--foreground)" }}>Influencer & Creator Marketing</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--foreground-secondary)" }}>
-End-to-End Campaign Management • Apify Profile Scraping • Automated Filtering & Outreach • Creator Research & Scouting • Commercial Negotiation • Creator Onboarding (100+) • Influencer Budget Management • Video Content Production • Custom Tracking App (Replit) • Performance Tracking (Reach, Engagement, CTR, Follower Growth, Likes, Comments)
-                </p>
-              </div>
-              <div>
-                <h3 className="text-sm font-bold mb-2" style={{ color: "var(--foreground)" }}>AI & Automation Tools</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--foreground-secondary)" }}>
-                  N8N Automation • Claude AI • ChatGPT / OpenAI • Replit • Apify Web Scraping • Prompt Engineering • AI Content Writing • AI Workflow Automation • Template-based Image Generation • Content Research Scraping
-                </p>
-              </div>
-              <div>
-                <h3 className="text-sm font-bold mb-2" style={{ color: "var(--foreground)" }}>Tools & Platforms</h3>
-                <p className="text-sm leading-relaxed" style={{ color: "var(--foreground-secondary)" }}>
-                  HubSpot • Figma • Google Analytics • Marketing Analytics • Cross-functional Collaboration • Team Leadership
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Key Achievements */}
-          <div>
-            <h2
-              className="text-lg font-bold uppercase tracking-wider mb-3 pb-1"
-              style={{ color: "var(--foreground)", borderBottom: "1px solid var(--border)" }}
-            >
-              Key Achievements
-            </h2>
-            <ul className="space-y-1.5 text-sm" style={{ color: "var(--foreground-secondary)" }}>
-              <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Managed a $1.3M influencer marketing budget and onboarded 100+ influencers across LinkedIn, Instagram, YouTube, and X</li>
-              <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built a Replit web app to track influencers, budget, and live campaign engagement, likes, and comments</li>
-              <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built 50+ AI-powered automation workflows for marketing operations</li>
-              <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Launched 10+ products with comprehensive go-to-market strategies</li>
-              <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Built 15+ automated content pipelines reducing manual effort by 70%</li>
-              <li className="flex gap-2"><span style={{ color: "var(--accent)" }}>•</span>Developed AI-driven content research and scraping systems using Apify and N8N</li>
+              {skillGroups.map((group) => (
+                <li key={group.label} className="leading-relaxed">
+                  <strong
+                    className="font-semibold"
+                    style={{ color: "var(--foreground)" }}
+                  >
+                    {group.label}:
+                  </strong>{" "}
+                  {group.items.join(", ")}
+                </li>
+              ))}
             </ul>
-          </div>
+          </ResumeSection>
+
+          <ResumeSection title="Education & Certifications">
+            <ul
+              className="space-y-1.5 text-sm"
+              style={{ color: "var(--foreground-secondary)" }}
+            >
+              {education.map((credential) => (
+                <Bullet key={credential.title}>
+                  {/* Titles with an issuing org are credentials; a title
+                      without one (paid media) is a plain note. */}
+                  <span
+                    className={credential.org ? "font-medium" : undefined}
+                    style={
+                      credential.org ? { color: "var(--foreground)" } : undefined
+                    }
+                  >
+                    {credential.title}
+                  </span>
+                  {credential.org ? `, ${credential.org}` : ""}
+                  {credential.date ? `, ${credential.date}` : ""}
+                </Bullet>
+              ))}
+            </ul>
+          </ResumeSection>
+
+          <ResumeSection title="Coursework Highlights">
+            <ul
+              className="space-y-1.5 text-sm"
+              style={{ color: "var(--foreground-secondary)" }}
+            >
+              {coursework.map((item) => (
+                <Bullet key={item}>{item}</Bullet>
+              ))}
+            </ul>
+          </ResumeSection>
         </motion.div>
       </div>
 
       {/* Print Styles */}
       <style jsx global>{`
+        @page {
+          margin: 14mm 16mm;
+        }
+
         @media print {
           .print-hide,
           nav,
           footer,
-          .animated-bg {
+          .gradient-mesh,
+          .web-overlay,
+          .web-corner,
+          .fire-glow,
+          .fire-embers {
             display: none !important;
           }
+          html,
           body {
-            background: white !important;
-            color: #111 !important;
-          }
-          .glass-card {
-            background: white !important;
-            border: none !important;
-            box-shadow: none !important;
-            backdrop-filter: none !important;
-          }
-          .resume-content {
-            padding: 0 !important;
-          }
-          .resume-content * {
-            color: #111 !important;
-          }
-          .resume-content span[style*="color: var(--accent)"] {
-            color: #333 !important;
+            background: #fff !important;
           }
           main {
             padding-top: 0 !important;
+          }
+          .resume-page {
+            max-width: none !important;
+            padding: 0 !important;
+          }
+          /* Print in the light palette, whichever theme is on screen */
+          .resume-content {
+            --foreground: #111111;
+            --foreground-secondary: #333333;
+            --foreground-muted: #555555;
+            --border: #d5d9e3;
+            --accent: #b81f28;
+            --accent-strong: #b81f28;
+            background: #fff !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            overflow: visible !important;
+            transform: none !important;
+            padding: 0 !important;
+          }
+          .resume-content::before {
+            display: none !important;
+          }
+          .resume-content a {
+            color: inherit !important;
+            text-decoration: none !important;
+          }
+          .resume-content li {
+            break-inside: avoid;
+          }
+          .resume-content h2,
+          .resume-keep {
+            break-after: avoid;
           }
         }
       `}</style>

@@ -9,21 +9,14 @@ import {
   MapPin,
   CheckCircle,
 } from "lucide-react";
+import { site } from "../data/site";
 
 function LinkedinIcon({ size = 20 }: { size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
       <rect width="4" height="12" x="2" y="9"/>
       <circle cx="4" cy="4" r="2"/>
-    </svg>
-  );
-}
-
-function TwitterIcon({ size = 20 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
     </svg>
   );
 }
@@ -61,7 +54,7 @@ export default function ContactPage() {
         setFormState({ name: "", email: "", message: "" });
         setSubmitted(false);
       }, 5000);
-    } catch (err) {
+    } catch {
       setError("Failed to send message. Please try again later.");
     } finally {
       setIsSubmitting(false);
@@ -110,8 +103,8 @@ export default function ContactPage() {
             className="text-base max-w-lg"
             style={{ color: "var(--foreground-secondary)" }}
           >
-            Have a project in mind, want to collaborate, or just want to say
-            hello? I&apos;d love to hear from you.
+            Hiring for an SEO role, planning a site migration, or want your
+            brand to show up in AI search? I&apos;d love to hear from you.
           </motion.p>
         </div>
 
@@ -139,7 +132,7 @@ export default function ContactPage() {
                     className="text-xl font-bold mb-2"
                     style={{ color: "var(--foreground)" }}
                   >
-                    Message Sent!
+                    Message sent
                   </h3>
                   <p
                     className="text-sm"
@@ -247,7 +240,7 @@ export default function ContactPage() {
                       onBlur={(e) =>
                         (e.target.style.borderColor = "var(--border)")
                       }
-                      placeholder="Tell me about your project..."
+                      placeholder="Tell me about the role or project..."
                     />
                   </div>
 
@@ -283,17 +276,17 @@ export default function ContactPage() {
           >
             {/* Email Card */}
             <a
-              href="mailto:sahuvishal395@gmail.com"
-              className="glass-card p-5 flex items-center gap-4 group block"
+              href={`mailto:${site.email}`}
+              className="glass-card p-5 flex items-center gap-4 group"
               id="contact-email-link"
             >
               <div
-                className="p-3 rounded-xl"
+                className="p-3 rounded-xl shrink-0"
                 style={{ background: "var(--accent-light)" }}
               >
                 <Mail size={20} style={{ color: "var(--accent)" }} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p
                   className="text-xs font-medium mb-0.5"
                   style={{ color: "var(--foreground-muted)" }}
@@ -301,29 +294,29 @@ export default function ContactPage() {
                   Email
                 </p>
                 <p
-                  className="text-sm font-medium"
+                  className="text-sm font-medium wrap-anywhere"
                   style={{ color: "var(--foreground)" }}
                 >
-                  sahuvishal395@gmail.com
+                  {site.email}
                 </p>
               </div>
             </a>
 
             {/* LinkedIn Card */}
             <a
-              href="https://www.linkedin.com/in/vishal-sahu-a56526238"
+              href={site.linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-card p-5 flex items-center gap-4 group block"
+              className="glass-card p-5 flex items-center gap-4 group"
               id="contact-linkedin"
             >
               <div
-                className="p-3 rounded-xl"
-                style={{ background: "var(--accent-light)" }}
+                className="p-3 rounded-xl shrink-0"
+                style={{ background: "var(--accent-light)", color: "var(--accent)" }}
               >
                 <LinkedinIcon size={20} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p
                   className="text-xs font-medium mb-0.5"
                   style={{ color: "var(--foreground-muted)" }}
@@ -331,31 +324,31 @@ export default function ContactPage() {
                   LinkedIn
                 </p>
                 <p
-                  className="text-sm font-medium"
+                  className="text-sm font-medium wrap-anywhere"
                   style={{ color: "var(--foreground)" }}
                 >
-                  /in/vishal-sahu-a56526238
+                  {site.linkedinHandle}
                 </p>
               </div>
             </a>
 
             {/* GitHub Card */}
             <a
-              href="https://github.com/sahuvishal395/"
+              href={site.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="glass-card p-5 flex items-center gap-4 group block"
+              className="glass-card p-5 flex items-center gap-4 group"
               id="contact-github"
             >
               <div
-                className="p-3 rounded-xl"
+                className="p-3 rounded-xl shrink-0"
                 style={{ background: "var(--accent-light)" }}
               >
-                <svg width={20} height={20} viewBox="0 0 24 24" fill="currentColor" style={{ color: "var(--accent)" }}>
+                <svg width={20} height={20} viewBox="0 0 24 24" fill="currentColor" style={{ color: "var(--accent)" }} aria-hidden="true">
                   <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                 </svg>
               </div>
-              <div>
+              <div className="min-w-0">
                 <p
                   className="text-xs font-medium mb-0.5"
                   style={{ color: "var(--foreground-muted)" }}
@@ -363,10 +356,10 @@ export default function ContactPage() {
                   GitHub
                 </p>
                 <p
-                  className="text-sm font-medium"
+                  className="text-sm font-medium wrap-anywhere"
                   style={{ color: "var(--foreground)" }}
                 >
-                  /sahuvishal395
+                  {site.githubHandle}
                 </p>
               </div>
             </a>
@@ -374,12 +367,12 @@ export default function ContactPage() {
             {/* Location Card */}
             <div className="glass-card p-5 flex items-center gap-4">
               <div
-                className="p-3 rounded-xl"
+                className="p-3 rounded-xl shrink-0"
                 style={{ background: "var(--accent-light)" }}
               >
                 <MapPin size={20} style={{ color: "var(--accent)" }} />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p
                   className="text-xs font-medium mb-0.5"
                   style={{ color: "var(--foreground-muted)" }}
@@ -390,7 +383,7 @@ export default function ContactPage() {
                   className="text-sm font-medium"
                   style={{ color: "var(--foreground)" }}
                 >
-                  India
+                  {site.location}
                 </p>
               </div>
             </div>

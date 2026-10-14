@@ -1,0 +1,39 @@
+# Vishal Kumar Sahu
+
+> SEO & Organic Growth | Product Marketing Lead at TestMu AI (formerly LambdaTest), a B2B software testing platform. Based in Noida, India.
+
+SEO specialist with 3.5+ years at TestMu AI (formerly LambdaTest). The work runs from technical SEO, keyword research, content and link building to GEO/AEO: making sure the brand is cited when buyers ask ChatGPT, Perplexity and Gemini for answers. The method is the same for both: use Google Search Console, Ahrefs and Semrush to find where demand is going unmet, then build pages that rank, get cited and convert.
+
+Key facts:
+
+- Role: Product Marketing Lead, TestMu AI (formerly LambdaTest), July 2023 to present. Before that: Sales Trainee, Byju's, July 2022 to September 2022.
+- SEO: ran SEO for the LambdaTest to TestMu AI rebrand, optimized 150+ blog articles, built 40+ new SEO pages, merged 118 thin pages into one hub, and narrowed 1,652 keywords from 19 competitor domains into 14 topic clusters and 40 quick wins.
+- GEO/AEO: set up AI search tracking in Profound, where TestMu AI ranks 9th of 142 domains for citation share.
+- Beyond SEO: reworked 100+ landing pages around campaign goals, took LambdaTest to #1 on Product Hunt, grew Google My Business and Pinterest to 10K+ monthly views, edits Coding Jag (a weekly developer newsletter), and handled a $1.3M influencer budget.
+- Tools: Google Search Console, Google Analytics (GA4), Ahrefs, Semrush, SE Ranking, Profound, WordPress, VS Code, Claude, Notion, Replit, Hootsuite, MeetAlfred, Google My Business, Product Hunt.
+- Education: Bachelor of Commerce, BBMKU (2020); Professional Certification in Digital Marketing & Strategy, IIDE (December 2024); Digital Marketing, Kraftshala (May 2023). Basic knowledge of paid media: Google, Meta and LinkedIn Ads.
+- Profiles: LinkedIn https://www.linkedin.com/in/vishal-sahu-a56526238 and GitHub https://github.com/sahuvishal395
+
+## Case studies
+
+- [SEO and AI search case studies](https://www.vishalkumarsahu.com/seo): Seven SEO and GEO/AEO case studies from TestMu AI (formerly LambdaTest), with the numbers behind each.
+- [SEO for the LambdaTest to TestMu AI rebrand](https://www.vishalkumarsahu.com/seo#rebrand-seo-migration): Redirect maps, sitemap and robots.txt cleanup, Organization schema, and updated brand profiles on Wikidata, G2, LinkedIn and GitHub.
+- [Getting cited in ChatGPT, Perplexity and Gemini answers](https://www.vishalkumarsahu.com/seo#ai-search-geo-aeo): Set up AI search tracking in Profound, where TestMu AI ranks 9th of 142 domains for citation share, and planned Quora answers around 139 threads that AI tools already cite.
+- [Fixing indexation on templated pages at scale](https://www.vishalkumarsahu.com/seo#templated-pages-indexation): Merged 118 thin Chrome version pages into one hub with 301s, and wrote content and schema for 51 free-tool pages that had launched with no body copy.
+- [Technical audits across product, learning-hub and blog pages](https://www.vishalkumarsahu.com/seo#technical-seo-audits): Audited pages in Search Console, Ahrefs and Semrush; fixed cannibalization, wrong canonicals, stray noindex tags and redirect chains.
+- [Reclaiming backlinks after the domain move](https://www.vishalkumarsahu.com/seo#backlink-reclamation): Audited 449 "cross browser testing" backlinks after the move, found 376 still pointing to old or wrong URLs, and started repointing them to the right pages on the new domain.
+- [A keyword research pipeline across 19 competitors](https://www.vishalkumarsahu.com/seo#keyword-research-pipeline): Collected keywords across 19 competitor domains and narrowed 1,652 keywords into 14 topic clusters and 40 quick wins.
+- [Content that wins Position 0](https://www.vishalkumarsahu.com/seo#content-featured-snippets): Optimized 150+ blog articles and built 40+ new SEO pages, winning featured snippets (Position 0) for target queries.
+
+## Profile
+
+- [About](https://www.vishalkumarsahu.com/about): Background, approach, experience, skills, education and certifications.
+- [Resume](https://www.vishalkumarsahu.com/resume): Full resume. Product Marketing Lead at TestMu AI (formerly LambdaTest) since July 2023.
+- [Resume PDF](https://www.vishalkumarsahu.com/vishal_resume.pdf): The same resume as a PDF.
+
+## Also
+
+- [Influencer marketing case study](https://www.vishalkumarsahu.com/influencer-marketing): A $1.3M influencer budget and 100+ creators on LinkedIn, Instagram, YouTube and X, with Apify scraping, automated filtering and outreach, and a Replit app for tracking budget and live performance.
+- [Blog](https://www.vishalkumarsahu.com/blogs): Posts on product marketing: positioning in the AI era, go-to-market strategy, product storytelling and the metrics that matter.
+- [Reading list](https://www.vishalkumarsahu.com/reading-list): Books on marketing, business, technology and personal growth.
+- [Contact](https://www.vishalkumarsahu.com/contact): Message form, email and LinkedIn.

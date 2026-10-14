@@ -20,6 +20,7 @@ import {
   UserPlus,
   Video,
 } from "lucide-react";
+import { site } from "../data/site";
 
 const metrics = [
   { value: "$1.3M", label: "Creator budget managed" },
@@ -208,6 +209,26 @@ export default function InfluencerMarketingPage() {
             results and drive outreach, and a web app on Replit that tracks
             every influencer, budget against spend, and live campaign
             performance.
+          </motion.p>
+
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.48 }}
+            className="text-sm leading-relaxed mt-6 pl-4"
+            style={{
+              color: "var(--foreground-secondary)",
+              borderLeft: "2px solid var(--accent)",
+            }}
+          >
+            Influencer marketing runs alongside my main focus, SEO and AI
+            search visibility.{" "}
+            <Link
+              href="/seo"
+              className="link-hover inline-flex items-center gap-1"
+            >
+              See the SEO case studies <ArrowRight size={14} />
+            </Link>
           </motion.p>
         </div>
 
@@ -509,7 +530,7 @@ export default function InfluencerMarketingPage() {
               Get in touch <ArrowRight size={16} />
             </Link>
             <a
-              href="/vishal_resume.pdf"
+              href={site.resumePdf}
               download
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105"
               style={{
@@ -519,6 +540,12 @@ export default function InfluencerMarketingPage() {
             >
               <Download size={16} /> Download Resume
             </a>
+            <Link
+              href="/seo"
+              className="link-hover inline-flex items-center gap-1.5 text-sm self-center"
+            >
+              SEO case studies <ArrowRight size={14} />
+            </Link>
           </div>
         </motion.div>
       </div>
