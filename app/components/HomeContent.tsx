@@ -17,7 +17,7 @@ import {
   Zap,
 } from "lucide-react";
 import TypewriterText from "./TypewriterText";
-import { getFeaturedPost } from "../data/blogs";
+import type { BlogPostSummary } from "../data/blogs";
 import { stats } from "../data/about";
 import { otherWins, seoCaseStudies } from "../data/seo";
 import { site } from "../data/site";
@@ -99,8 +99,11 @@ const quickLinks = [
   },
 ];
 
-export default function HomeContent() {
-  const featuredPost = getFeaturedPost();
+export default function HomeContent({
+  featuredPost,
+}: {
+  featuredPost?: BlogPostSummary;
+}) {
 
   return (
     <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">

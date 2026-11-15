@@ -3,7 +3,7 @@ import { site } from "../data/site";
 
 const path = "/blogs";
 const title = "Blogs";
-const description = `Posts on product marketing by ${site.name}: positioning in the AI era, go-to-market strategy, product storytelling and the metrics that matter.`;
+const description = `Posts by ${site.name} on SEO, generative engine optimization and AI search, plus product marketing, go-to-market strategy and storytelling.`;
 
 export async function generateMetadata(
   _props: unknown,

@@ -51,9 +51,11 @@ export default function Footer() {
             >
               {site.name}
             </Link>
+            {/* --foreground-secondary: --foreground-muted is below WCAG AA
+                contrast for text in both themes. */}
             <p
               className="text-sm"
-              style={{ color: "var(--foreground-muted)" }}
+              style={{ color: "var(--foreground-secondary)" }}
             >
               {bio.tagline}
             </p>
@@ -99,7 +101,7 @@ export default function Footer() {
           </nav>
           <p
             className="text-xs text-center sm:text-right"
-            style={{ color: "var(--foreground-muted)" }}
+            style={{ color: "var(--foreground-secondary)" }}
           >
             © {new Date().getFullYear()} {site.name}. Built with{" "}
             <a

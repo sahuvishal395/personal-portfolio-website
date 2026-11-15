@@ -15,6 +15,9 @@ export const site = {
   github: "https://github.com/sahuvishal395",
   githubHandle: "/sahuvishal395",
   resumePdf: "/vishal_resume.pdf",
+  // Author box on blog posts. Facts from the CV, as in about.ts.
+  authorBio:
+    "Product Marketing Lead, SEO & Organic Growth at TestMu AI (formerly LambdaTest), with 3.5+ years in SEO. He set up AI search tracking in Profound, where TestMu AI ranks 9th of 142 domains for citation share.",
   employer: {
     name: "TestMu AI",
     formerName: "LambdaTest",

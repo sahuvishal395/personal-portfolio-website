@@ -1,0 +1,261 @@
+/* Blog post body. Builds on .prose-custom in globals.css; selectors start at
+   .article so they win over the equally specific .prose-custom rules.
+   Small text uses --foreground-secondary, not --foreground-muted, which is
+   below WCAG AA contrast in both themes. */
+
+/* Entrance motion in CSS rather than framer-motion: a motion `initial` state
+   is server-rendered as opacity 0, which hides the article until JavaScript
+   hydrates. Transform only, so the text is visible from the first paint and
+   still counts for Largest Contentful Paint. */
+.enter {
+  animation: postEnter 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes postEnter {
+  from {
+    transform: translateY(20px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+/* Anchored headings clear the fixed navbar. */
+.article h2,
+.article h3 {
+  scroll-margin-top: 5.5rem;
+}
+
+/* ─── Answer-first summary under the H1 ─── */
+.article .answer {
+  margin: 0 0 2.25rem;
+  padding: 1.15rem 1.35rem;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent-strong);
+  border-radius: 12px;
+  background: var(--background-secondary);
+}
+
+.article .answer p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: var(--foreground);
+}
+
+/* ─── Markdown body ─── */
+.article .md ul {
+  list-style: disc;
+}
+
+.article .md ol {
+  list-style: decimal;
+}
+
+.article .md li::marker {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.article .md li > p {
+  margin-bottom: 0.5rem;
+}
+
+.article .md h4 {
+  font-size: 1.075rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--foreground);
+}
+
+.article .md hr {
+  height: 1px;
+  border: 0;
+  margin: 2.5rem 0;
+  background: var(--border);
+}
+
+/* ─── Tables ─── */
+.article .tableWrap {
+  margin: 1.5rem 0 1.75rem;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card-bg);
+}
+
+.article .tableWrap:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 2px;
+}
+
+.article .tableWrap table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.article .tableWrap th,
+.article .tableWrap td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+.article .tableWrap th {
+  background: var(--background-secondary);
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.article .tableWrap td {
+  color: var(--foreground-secondary);
+  line-height: 1.6;
+}
+
+.article .tableWrap td:first-child {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.article .tableWrap tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ─── Table of contents ─── */
+.article .toc {
+  margin: 0 0 2.5rem;
+  padding: 1.1rem 1.35rem 1.2rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card-bg);
+}
+
+.article .tocTitle {
+  margin: 0 0 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--foreground-secondary);
+}
+
+.article .toc ol {
+  list-style: decimal;
+  margin: 0;
+  padding-left: 1.4rem;
+}
+
+.article .toc li {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.article .toc li::marker {
+  color: var(--foreground-secondary);
+  font-size: 0.85rem;
+}
+
+.article .toc .tocLink {
+  color: var(--foreground-secondary);
+  text-decoration: none;
+}
+
+.article .toc .tocLink:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* ─── Key takeaways ─── */
+.article .takeaways {
+  margin: 2.75rem 0 0;
+  padding: 1.4rem 1.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--accent-strong);
+  border-radius: 12px;
+  background: var(--background-secondary);
+}
+
+.article .takeaways h2 {
+  margin-top: 0;
+  font-size: 1.25rem;
+}
+
+.article .takeaways ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.article .takeaways li {
+  position: relative;
+  padding-left: 1.6rem;
+}
+
+.article .takeaways li::before {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  top: 0.68em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 2px;
+  background: var(--accent-strong);
+  transform: rotate(45deg);
+}
+
+/* ─── FAQ ─── */
+.article .faq {
+  margin-top: 2.75rem;
+}
+
+.article .faqItem {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.article .faq h2 + .faqItem {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.article .faqItem h3 {
+  margin-top: 0.25rem;
+  font-size: 1.1rem;
+}
+
+.article .faqItem p {
+  margin-bottom: 1rem;
+}
+
+/* ─── Author box ─── */
+.article .author {
+  margin-top: 3rem;
+  padding: 1.25rem 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card-bg);
+}
+
+.article .author p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--foreground-secondary);
+}
+
+.article .author .authorName {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.article .author .authorBio {
+  margin-top: 0.35rem;
+}
+
+.article .author .updated {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+}

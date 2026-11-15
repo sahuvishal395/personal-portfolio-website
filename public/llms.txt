@@ -25,6 +25,11 @@ Key facts:
 - [A keyword research pipeline across 19 competitors](https://www.vishalkumarsahu.com/seo#keyword-research-pipeline): Collected keywords across 19 competitor domains and narrowed 1,652 keywords into 14 topic clusters and 40 quick wins.
 - [Content that wins Position 0](https://www.vishalkumarsahu.com/seo#content-featured-snippets): Optimized 150+ blog articles and built 40+ new SEO pages, winning featured snippets (Position 0) for target queries.
 
+## Writing
+
+- [What Is Generative Engine Optimization (GEO)?](https://www.vishalkumarsahu.com/blogs/generative-engine-optimization): What GEO is, how ChatGPT, Perplexity and Google AI Overviews pick the sources they cite, what the original GEO research found, and how to start, with first-hand examples from AI citation tracking at TestMu AI.
+- [Blog](https://www.vishalkumarsahu.com/blogs): Posts on SEO, generative engine optimization and AI search, plus product marketing, go-to-market strategy and storytelling.
+
 ## Profile
 
 - [About](https://www.vishalkumarsahu.com/about): Background, approach, experience, skills, education and certifications.
@@ -34,6 +39,5 @@ Key facts:
 ## Also
 
 - [Influencer marketing case study](https://www.vishalkumarsahu.com/influencer-marketing): A $1.3M influencer budget and 100+ creators on LinkedIn, Instagram, YouTube and X, with Apify scraping, automated filtering and outreach, and a Replit app for tracking budget and live performance.
-- [Blog](https://www.vishalkumarsahu.com/blogs): Posts on product marketing: positioning in the AI era, go-to-market strategy, product storytelling and the metrics that matter.
 - [Reading list](https://www.vishalkumarsahu.com/reading-list): Books on marketing, business, technology and personal growth.
 - [Contact](https://www.vishalkumarsahu.com/contact): Message form, email and LinkedIn.

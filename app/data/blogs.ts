@@ -1,3 +1,23 @@
+import { generativeEngineOptimization } from "./posts/generative-engine-optimization";
+
+export interface BlogFaq {
+  question: string;
+  answer: string;
+}
+
+export interface BlogImage {
+  // Path under /public.
+  src: string;
+  width: number;
+  height: number;
+}
+
+// A schema.org entity the post is about or mentions, for structured data.
+export interface BlogEntity {
+  name: string;
+  sameAs?: string;
+}
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -7,9 +27,47 @@ export interface BlogPost {
   tags: string[];
   readingTime: string;
   featured?: boolean;
+  // The fields below are optional and used by long-form guides.
+  // <title> and og:title, when they should differ from the H1.
+  metaTitle?: string;
+  // dateModified. Defaults to `date`.
+  updated?: string;
+  // Answer-first block shown directly under the H1.
+  summary?: string;
+  keyTakeaways?: string[];
+  faqs?: BlogFaq[];
+  image?: {
+    alt: string;
+    // 1200x630, for og:image and twitter:image.
+    social: BlogImage;
+    // 1:1, 4:3 and 16:9 versions for Article structured data.
+    schema: BlogImage[];
+  };
+  section?: string;
+  about?: BlogEntity[];
+  mentions?: BlogEntity[];
 }
 
+// What client components need to list a post, without the post body.
+export type BlogPostSummary = Pick<
+  BlogPost,
+  "slug" | "title" | "date" | "excerpt" | "tags" | "readingTime"
+>;
+
+// Slugs reserved for the AI search cluster that are not published yet. A link
+// to one renders as plain text until the post exists, then becomes a link on
+// the next build. A link to any other missing post fails the build.
+export const plannedPostSlugs = new Set([
+  "geo-vs-seo",
+  "what-is-aeo",
+  "ai-search-optimization",
+  "llm-seo",
+  "ai-visibility",
+  "geo-tools",
+]);
+
 export const blogPosts: BlogPost[] = [
+  generativeEngineOptimization,
   {
     slug: "future-of-product-marketing-ai-era",
     title: "The Future of Product Marketing in the AI Era",
@@ -53,7 +111,6 @@ What are your thoughts on AI in product marketing? I'd love to hear from fellow 
     `.trim(),
     tags: ["Product Marketing", "AI", "Strategy", "Future of Work"],
     readingTime: "5 min read",
-    featured: true,
   },
   {
     slug: "go-to-market-strategy-playbook",
@@ -235,6 +292,15 @@ export function getBlogPost(slug: string): BlogPost | undefined {
 
 export function getFeaturedPost(): BlogPost | undefined {
   return blogPosts.find((post) => post.featured);
+}
+
+export function lastModified(post: BlogPost): string {
+  return post.updated ?? post.date;
+}
+
+export function toSummary(post: BlogPost): BlogPostSummary {
+  const { slug, title, date, excerpt, tags, readingTime } = post;
+  return { slug, title, date, excerpt, tags, readingTime };
 }
 
 export function getAllTags(): string[] {

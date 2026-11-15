@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { site } from "./data/site";
-import { blogPosts } from "./data/blogs";
+import { blogPosts, lastModified } from "./data/blogs";
 
 const absolute = (path: string) => (path === "/" ? site.url : `${site.url}${path}`);
 
@@ -9,7 +9,7 @@ const absolute = (path: string) => (path === "/" ? site.url : `${site.url}${path
 // nothing.
 export default function sitemap(): MetadataRoute.Sitemap {
   const latestPostDate = blogPosts.reduce(
-    (latest, post) => (post.date > latest ? post.date : latest),
+    (latest, post) => (lastModified(post) > latest ? lastModified(post) : latest),
     "",
   );
 
@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...blogPosts.map((post) => ({
       url: absolute(`/blogs/${post.slug}`),
-      lastModified: post.date,
+      lastModified: lastModified(post),
       priority: 0.5,
     })),
     { url: absolute("/reading-list"), priority: 0.3 },
