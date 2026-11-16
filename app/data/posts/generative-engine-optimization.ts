@@ -1,14 +1,12 @@
 import type { BlogPost } from "../blogs";
 
-// Post 1 (pillar) of the AI search cluster. Links to cluster posts that are
-// not published yet render as plain text until they exist (see
-// plannedPostSlugs in ../blogs.ts).
+// Post 1 (pillar) of the AI search cluster. Posts 2-7 are in this folder.
 export const generativeEngineOptimization: BlogPost = {
   slug: "generative-engine-optimization",
   title: "What Is Generative Engine Optimization (GEO)?",
   metaTitle: "What Is Generative Engine Optimization (GEO)? How It Works",
   date: "2026-11-15",
-  updated: "2026-11-15",
+  updated: "2026-11-16",
   excerpt:
     "What generative engine optimization (GEO) is, how ChatGPT, Perplexity and Google AI Overviews pick sources, what the research found, and where to start.",
   summary:
@@ -16,7 +14,7 @@ export const generativeEngineOptimization: BlogPost = {
   content: `
 I set up AI search tracking for TestMu AI (formerly LambdaTest), a software testing platform, in Profound, a tracker that runs a fixed set of prompts through AI engines daily and records the sites they cite. TestMu AI [ranks 9th of the 142 domains](/seo#ai-search-geo-aeo) in its citation-share table. When I built our keyword research pipeline for classic SEO, I pulled keywords from 19 competitor domains.
 
-The gap between those two numbers is the shortest explanation of generative engine optimization I know. The 19 is a list I chose; the 142 is every domain the tracked answers actually cited.
+The gap between those two numbers is the shortest explanation of generative engine optimization I know. The 19 is the competitor list behind that pipeline; the 142 is every domain in Profound's citation-share table.
 
 [[toc]]
 
@@ -96,22 +94,22 @@ For a B2B company the loss is hard to spot. A buyer asks ChatGPT for the best cr
 
 ## Is GEO the same as SEO or AEO?
 
-GEO is not the same as SEO or AEO, but it builds on both. Google's position is that, for its own results, "optimizing for generative AI search is optimizing for the search experience, and thus still SEO." ChatGPT search and Perplexity also crawl and search the web before they answer, so pages they can crawl and index start ahead. The differences are in the goal (cited rather than ranked) and the unit that competes (a passage more than a page), which I'm covering in a separate post on [GEO vs SEO](/blogs/geo-vs-seo).
+GEO is not the same as SEO or AEO, but it builds on both. Google's position is that, for its own results, "optimizing for generative AI search is optimizing for the search experience, and thus still SEO." ChatGPT search and Perplexity also crawl and search the web before they answer, so pages they can crawl and index start ahead. The differences are in the goal (cited rather than ranked) and the unit that competes (a passage more than a page), which I compare side by side in my post on [GEO vs SEO](/blogs/geo-vs-seo).
 
-Answer engine optimization (AEO) is an older term for winning direct answers such as featured snippets and voice results. Many teams now use AEO and GEO interchangeably, and I'm covering where they differ in a separate post on [what is AEO](/blogs/what-is-aeo).
+Answer engine optimization (AEO) is an older term for winning direct answers such as featured snippets and voice results. Many teams now use AEO and GEO interchangeably; my guide to [what is AEO](/blogs/what-is-aeo) explains where they differ.
 
 ## What does GEO work look like in practice?
 
 In practice, GEO is six jobs: choosing the prompts that matter, measuring where you stand, finding the sources AI engines already trust, making your pages easy to quote, keeping your brand's details consistent and letting the AI crawlers in. Only some of them happen on your own site.
 
 1. Choose the prompts that matter. Write down the questions buyers ask AI tools, in their own words. "Which cross browser testing tool works for a small QA team?" tells you more than "cross browser testing".
-2. Measure where you stand. Run the prompts in ChatGPT, Perplexity, Google AI Overviews and Gemini, and record who gets cited and anything the answers get wrong about you. A tracker like Profound does this at scale and reports citation share, which it [defines](https://docs.tryprofound.com/getting-started/glossary) as "the percentage of all citations that point to a given domain, page, or citation category." I'm covering [AI visibility](/blogs/ai-visibility) metrics and comparing [GEO tools](/blogs/geo-tools) in separate posts.
+2. Measure where you stand. Run the prompts in ChatGPT, Perplexity, Google AI Overviews and Gemini, and record who gets cited and anything the answers get wrong about you. A tracker like Profound does this at scale and reports citation share, which it [defines](https://docs.tryprofound.com/getting-started/glossary) as "the percentage of all citations that point to a given domain, page, or citation category." I cover [AI visibility](/blogs/ai-visibility) metrics and compare [GEO tools](/blogs/geo-tools) in separate posts.
 3. Find the sources the engines already trust. The domains that keep appearing in answers are your real competition. For us that included Quora: I found 139 Quora threads that AI tools already cite for our topics and planned answers around them. In Ahrefs' November 2026 lists, YouTube and Reddit led [Google AI Overviews](https://ahrefs.com/blog/most-cited-domains-ai-overviews/) and Quora ranked sixth, yet Quora was outside the top 50 in [ChatGPT](https://ahrefs.com/blog/most-cited-domains-in-chatgpt/), [Perplexity](https://ahrefs.com/blog/most-cited-domains-perplexity/) and [Gemini](https://ahrefs.com/blog/most-cited-domains-gemini/). A genuine mention in a source the engine already uses can put your brand in the answer; Google warns that chasing inauthentic mentions "isn't as helpful as it might seem."
 4. Make your own pages easy to quote. Answer each heading's question in its first sentence or two, define terms in one sentence, name the source behind every number, and put comparisons in tables. If you've won featured snippets, as I have through 150+ optimized blog articles and 40+ new SEO pages at TestMu AI, you'll recognize most of these habits. Doing this for specific engines such as ChatGPT and Perplexity is what people call [LLM SEO](/blogs/llm-seo).
 5. Keep your brand's details consistent. An entity is a company, product or person that search engines and AI systems recognize across sources. During the LambdaTest to TestMu AI rebrand I added Organization schema for the new brand and updated its profiles on Wikidata, G2, LinkedIn and GitHub, so the old name and the new one resolve to the same company.
 6. Let the crawlers in. Allow the search crawlers in the table above through robots.txt and your CDN or firewall, and keep key text in the HTML. In a [December 2024 analysis](https://vercel.com/blog/the-rise-of-the-ai-crawler), Vercel found that the crawlers from OpenAI, Anthropic and Perplexity didn't render JavaScript, while Google's Gemini and Applebot did. A page with no body copy gives an engine nothing to quote; at TestMu AI I wrote content and schema for 51 free-tool pages that had launched without any.
 
-I'm writing up the full process, including where agentic SEO fits (preparing a site for AI agents that complete tasks for people), as a step-by-step guide to [AI search optimization](/blogs/ai-search-optimization).
+The full process, including where agentic SEO fits (preparing a site for AI agents that complete tasks for people), is in my step-by-step guide to [AI search optimization](/blogs/ai-search-optimization).
 
 ## What are the most common GEO mistakes?
 
@@ -136,7 +134,7 @@ That small test shows which sources the engines trust in your category and wheth
     "Generative engine optimization (GEO) is the practice of getting your content found and cited by AI systems such as ChatGPT, Perplexity and Google AI Overviews.",
     "The term was introduced in the 2023 GEO paper (KDD 2024), where adding quotations, statistics or citations raised a page's share of a test engine's answers by 30 to 40% and keyword stuffing did not help.",
     "GEO builds on SEO. A page that can't be crawled and indexed will rarely be cited.",
-    "In my Profound tracking for TestMu AI, AI answers cited 142 domains, far more than the 19 competitors in our SEO research, so sources you don't own matter.",
+    "Profound's citation-share table for TestMu AI lists 142 domains, far more than the 19 competitor domains in our SEO keyword research, so sources you don't own matter.",
     "Measure citation share, your percentage of all citations in AI answers, over many prompts and repeated runs, since the answers keep changing.",
   ],
   faqs: [

@@ -4,6 +4,7 @@ import {
   lastModified,
   toSummary,
   type BlogEntity,
+  type BlogPost,
 } from "../../data/blogs";
 import BlogPostClient from "./BlogPostClient";
 import PostBody, { citedUrls, countWords } from "./PostBody";
@@ -148,11 +149,16 @@ export default async function BlogPostPage({ params }: Props) {
   };
 
   // Related posts are picked here, on the server, so the client bundle does
-  // not carry every post body.
+  // not carry every post body. Posts sharing the most tags come first; ties
+  // keep the order of blogPosts.
+  const sharedTags = (other: BlogPost) =>
+    other.tags.filter((tag) => post.tags.includes(tag)).length;
   const related = blogPosts
     .filter((p) => p.slug !== post.slug)
+    .map((p, index) => ({ p, index, shared: sharedTags(p) }))
+    .sort((a, b) => b.shared - a.shared || a.index - b.index)
     .slice(0, 2)
-    .map(toSummary);
+    .map(({ p }) => toSummary(p));
 
   return (
     <>

@@ -28,6 +28,12 @@ Key facts:
 ## Writing
 
 - [What Is Generative Engine Optimization (GEO)?](https://www.vishalkumarsahu.com/blogs/generative-engine-optimization): What GEO is, how ChatGPT, Perplexity and Google AI Overviews pick the sources they cite, what the original GEO research found, and how to start, with first-hand examples from AI citation tracking at TestMu AI.
+- [GEO vs SEO vs AEO: What's the Difference?](https://www.vishalkumarsahu.com/blogs/geo-vs-seo): How SEO, AEO and GEO differ in what they target, where results appear and how each is measured, how much rankings and AI citations overlap, and whether GEO replaces SEO.
+- [What Is AEO (Answer Engine Optimization)?](https://www.vishalkumarsahu.com/blogs/what-is-aeo): What answer engine optimization is, where the term came from, how it overlaps with GEO, where FAQ, How-to and speakable markup stand in Google Search, and what still earns answers in AI Overviews, AI Mode and ChatGPT.
+- [AI Search Optimization: A Step-by-Step Guide](https://www.vishalkumarsahu.com/blogs/ai-search-optimization): Eight steps, each with a check, to make a site easy for Google AI Overviews and AI Mode, ChatGPT search, Perplexity and Microsoft Copilot to crawl, understand and cite, plus keeping AI search visibility through a rebrand and preparing a site for AI agents.
+- [LLM SEO: How to Get Cited by ChatGPT and Perplexity](https://www.vishalkumarsahu.com/blogs/llm-seo): How ChatGPT and Perplexity find the pages they cite, which crawlers each one needs access to, which sources each engine cites most, and a step-by-step plan for earning citations.
+- [AI Visibility: How to Measure and Track It](https://www.vishalkumarsahu.com/blogs/ai-visibility): The AI visibility metrics to track, the Google, Microsoft and OpenAI reports that show AI search data, how to read a citation share rank, how to choose tracking prompts, and why AI answers change from day to day.
+- [Best GEO Tools to Track AI Search Visibility](https://www.vishalkumarsahu.com/blogs/geo-tools): GEO and AI visibility tools compared from their makers' own documentation: the engines each one covers, how trackers collect AI answers, which options are free, and what to check before you buy.
 - [Blog](https://www.vishalkumarsahu.com/blogs): Posts on SEO, generative engine optimization and AI search, plus product marketing, go-to-market strategy and storytelling.
 
 ## Profile

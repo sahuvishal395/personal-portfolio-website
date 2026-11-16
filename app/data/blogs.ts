@@ -1,4 +1,10 @@
 import { generativeEngineOptimization } from "./posts/generative-engine-optimization";
+import { geoVsSeo } from "./posts/geo-vs-seo";
+import { whatIsAeo } from "./posts/what-is-aeo";
+import { aiSearchOptimization } from "./posts/ai-search-optimization";
+import { llmSeo } from "./posts/llm-seo";
+import { aiVisibility } from "./posts/ai-visibility";
+import { geoTools } from "./posts/geo-tools";
 
 export interface BlogFaq {
   question: string;
@@ -54,20 +60,19 @@ export type BlogPostSummary = Pick<
   "slug" | "title" | "date" | "excerpt" | "tags" | "readingTime"
 >;
 
-// Slugs reserved for the AI search cluster that are not published yet. A link
-// to one renders as plain text until the post exists, then becomes a link on
-// the next build. A link to any other missing post fails the build.
-export const plannedPostSlugs = new Set([
-  "geo-vs-seo",
-  "what-is-aeo",
-  "ai-search-optimization",
-  "llm-seo",
-  "ai-visibility",
-  "geo-tools",
-]);
+// Slugs reserved for posts that are not published yet. A link to one renders
+// as plain text until the post exists, then becomes a link on the next build.
+// A link to any other missing post fails the build.
+export const plannedPostSlugs = new Set<string>();
 
 export const blogPosts: BlogPost[] = [
   generativeEngineOptimization,
+  geoVsSeo,
+  whatIsAeo,
+  aiSearchOptimization,
+  llmSeo,
+  aiVisibility,
+  geoTools,
   {
     slug: "future-of-product-marketing-ai-era",
     title: "The Future of Product Marketing in the AI Era",
