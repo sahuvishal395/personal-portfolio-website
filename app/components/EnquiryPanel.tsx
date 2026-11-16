@@ -4,20 +4,30 @@ import { useEffect, useId, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { CheckCircle, Send, X } from "lucide-react";
 import { site } from "../data/site";
-import { enquiryTopics } from "../data/enquiry";
+import { enquiryTopics, type EnquiryTrigger } from "../data/enquiry";
+import { currentVisit } from "./enquiryVisit";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+// What the visitor has typed survives closing and reopening the panel
+// during the visit, so an accidental Escape or X loses nothing.
+const draft = { name: "", email: "", topic: "", message: "" };
+
+// 16px text on phones stops iOS Safari from zooming in on focus.
 const fieldClass =
-  "w-full px-3.5 py-2.5 rounded-xl text-sm bg-background-secondary border border-border text-foreground placeholder:text-foreground-muted outline-none transition-colors focus:border-accent";
+  "w-full px-3.5 py-2.5 rounded-xl text-base sm:text-sm bg-background-secondary border border-foreground-muted text-foreground placeholder:text-foreground-secondary outline-none transition-colors focus:border-accent";
 
 const labelClass = "block text-xs font-semibold mb-1.5 text-foreground";
 
 export default function EnquiryPanel({
+  initialTopic,
+  trigger,
   focusOnOpen,
   onClose,
   onSent,
 }: {
+  initialTopic: string;
+  trigger: EnquiryTrigger;
   focusOnOpen: boolean;
   onClose: () => void;
   onSent: () => void;
@@ -31,14 +41,18 @@ export default function EnquiryPanel({
   // that post instantly.
   const openedAt = useRef(0);
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [topic, setTopic] = useState("");
-  const [message, setMessage] = useState("");
-  const [company, setCompany] = useState("");
+  const [name, setName] = useState(draft.name);
+  const [email, setEmail] = useState(draft.email);
+  const [topic, setTopic] = useState(initialTopic || draft.topic);
+  const [message, setMessage] = useState(draft.message);
+  const [trap, setTrap] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
   const [announcement, setAnnouncement] = useState("");
+
+  useEffect(() => {
+    Object.assign(draft, { name, email, topic, message });
+  }, [name, email, topic, message]);
 
   useEffect(() => {
     openedAt.current = Date.now();
@@ -46,19 +60,21 @@ export default function EnquiryPanel({
   }, [focusOnOpen]);
 
   useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", onKey);
-    return () => document.removeEventListener("keydown", onKey);
-  }, [onClose]);
-
-  useEffect(() => {
     if (status === "sent") doneRef.current?.focus();
   }, [status]);
 
+  // Escape closes the panel only when focus is inside it, so it doesn't
+  // fight other components (the mobile menu) for the key.
+  const onKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Escape") {
+      event.stopPropagation();
+      onClose();
+    }
+  };
+
   const submit = async (event: React.FormEvent) => {
     event.preventDefault();
+    if (status === "sending") return;
     setStatus("sending");
     setError("");
     setAnnouncement("Sending your message");
@@ -71,9 +87,11 @@ export default function EnquiryPanel({
           email,
           topic,
           message,
-          company,
+          hp: trap,
           source: "popup",
+          trigger,
           page: window.location.pathname,
+          ...currentVisit(),
           elapsedMs: Date.now() - openedAt.current,
         }),
       });
@@ -85,6 +103,7 @@ export default function EnquiryPanel({
             : ""
         );
       }
+      Object.assign(draft, { name: "", email: "", topic: "", message: "" });
       setStatus("sent");
       setAnnouncement("Message sent");
       onSent();
@@ -100,6 +119,7 @@ export default function EnquiryPanel({
   };
 
   const firstName = name.trim().split(/\s+/)[0];
+  const sending = status === "sending";
 
   return (
     <motion.section
@@ -107,10 +127,13 @@ export default function EnquiryPanel({
       aria-modal="false"
       aria-labelledby={titleId}
       aria-describedby={introId}
+      onKeyDown={onKeyDown}
       initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.25, ease: "easeOut" }}
-      className="fixed z-30 inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-6 sm:right-6 sm:w-[380px] max-h-[85dvh] overflow-y-auto rounded-t-2xl sm:rounded-2xl border border-border bg-background text-foreground shadow-2xl print:hidden"
+      // The height stops short of the fixed 64px navbar, so the close button
+      // is never hidden under it on short screens or when zoomed in.
+      className="fixed z-30 inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-6 sm:right-6 sm:w-[380px] max-h-[calc(100dvh-5rem)] sm:max-h-[calc(100dvh-7rem)] overflow-y-auto overscroll-contain rounded-t-2xl sm:rounded-2xl border border-border bg-background text-foreground shadow-2xl print:hidden"
     >
       <div className="relative p-5 sm:p-6">
         <button
@@ -170,6 +193,7 @@ export default function EnquiryPanel({
                 <input
                   ref={nameRef}
                   id="enquiry-name"
+                  name="name"
                   type="text"
                   required
                   maxLength={100}
@@ -187,10 +211,15 @@ export default function EnquiryPanel({
                 </label>
                 <input
                   id="enquiry-email"
+                  name="email"
                   type="email"
                   required
                   maxLength={254}
                   autoComplete="email"
+                  // Same rule as the API, so the browser explains the problem
+                  // before sending: a full address with a domain like .com.
+                  pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}"
+                  title="A full email address, like name@company.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className={fieldClass}
@@ -236,6 +265,7 @@ export default function EnquiryPanel({
                 </label>
                 <textarea
                   id="enquiry-message"
+                  name="message"
                   required
                   rows={4}
                   maxLength={5000}
@@ -246,16 +276,18 @@ export default function EnquiryPanel({
                 />
               </div>
 
-              {/* Honeypot: hidden from people, often filled in by bots. */}
-              <div aria-hidden="true" className="absolute -left-[9999px] top-auto w-px h-px overflow-hidden">
-                <label htmlFor="enquiry-company">Company</label>
+              {/* Honeypot: never shown, so browser autofill leaves it alone,
+                  but bots reading the HTML often fill it in. */}
+              <div aria-hidden="true" className="hidden">
+                <label htmlFor="enquiry-hp-confirm">Leave this field empty</label>
                 <input
-                  id="enquiry-company"
+                  id="enquiry-hp-confirm"
+                  name="hp-confirm"
                   type="text"
                   tabIndex={-1}
                   autoComplete="off"
-                  value={company}
-                  onChange={(e) => setCompany(e.target.value)}
+                  value={trap}
+                  onChange={(e) => setTrap(e.target.value)}
                 />
               </div>
 
@@ -269,12 +301,16 @@ export default function EnquiryPanel({
                 </p>
               )}
 
+              {/* aria-disabled rather than disabled: a disabled button drops
+                  keyboard focus to the page while the message sends. */}
               <button
                 type="submit"
-                disabled={status === "sending"}
-                className="w-full inline-flex items-center justify-center gap-2 h-11 rounded-xl text-sm font-semibold bg-accent text-background hover:bg-accent-hover disabled:opacity-70 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                aria-disabled={sending}
+                className={`w-full inline-flex items-center justify-center gap-2 h-11 rounded-xl text-sm font-semibold bg-accent text-background hover:bg-accent-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${
+                  sending ? "opacity-70 cursor-wait" : ""
+                }`}
               >
-                {status === "sending" ? (
+                {sending ? (
                   "Sending..."
                 ) : (
                   <>

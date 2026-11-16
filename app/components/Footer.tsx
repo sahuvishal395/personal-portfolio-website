@@ -37,7 +37,7 @@ const footerLinks = [
 export default function Footer() {
   return (
     <footer
-      className="relative z-10 border-t py-12 mt-24"
+      className="relative z-10 border-t pt-12 pb-24 mt-24"
       style={{ borderColor: "var(--border)" }}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

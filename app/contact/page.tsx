@@ -10,6 +10,7 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { site } from "../data/site";
+import { currentVisit } from "../components/enquiryVisit";
 
 function LinkedinIcon({ size = 20 }: { size?: number }) {
   return (
@@ -27,7 +28,7 @@ export default function ContactPage() {
     email: "",
     message: "",
   });
-  const [company, setCompany] = useState("");
+  const [trap, setTrap] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -51,9 +52,11 @@ export default function ContactPage() {
         },
         body: JSON.stringify({
           ...formState,
-          company,
+          hp: trap,
           source: "contact-page",
+          trigger: "contact-page",
           page: "/contact",
+          ...currentVisit(),
           elapsedMs: Date.now() - openedAt.current,
         }),
       });
@@ -68,6 +71,10 @@ export default function ContactPage() {
       }
 
       setSubmitted(true);
+      // Someone who just wrote in shouldn't be invited to write in again.
+      try {
+        localStorage.setItem("enquiry:sentAt", String(Date.now()));
+      } catch {}
       setTimeout(() => {
         setFormState({ name: "", email: "", message: "" });
         setSubmitted(false);
@@ -176,8 +183,11 @@ export default function ContactPage() {
                     </label>
                     <input
                       id="contact-name"
+                      name="name"
                       type="text"
                       required
+                      maxLength={100}
+                      autoComplete="name"
                       value={formState.name}
                       onChange={(e) =>
                         setFormState({ ...formState, name: e.target.value })
@@ -208,8 +218,11 @@ export default function ContactPage() {
                     </label>
                     <input
                       id="contact-email"
+                      name="email"
                       type="email"
                       required
+                      maxLength={254}
+                      autoComplete="email"
                       value={formState.email}
                       onChange={(e) =>
                         setFormState({ ...formState, email: e.target.value })
@@ -240,8 +253,10 @@ export default function ContactPage() {
                     </label>
                     <textarea
                       id="contact-message"
+                      name="message"
                       required
                       rows={5}
+                      maxLength={5000}
                       value={formState.message}
                       onChange={(e) =>
                         setFormState({ ...formState, message: e.target.value })
@@ -262,16 +277,18 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  {/* Honeypot: hidden from people, often filled in by bots. */}
-                  <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
-                    <label htmlFor="contact-company">Company</label>
+                  {/* Honeypot: never shown, so browser autofill leaves it
+                      alone, but bots reading the HTML often fill it in. */}
+                  <div aria-hidden="true" className="hidden">
+                    <label htmlFor="contact-hp-confirm">Leave this field empty</label>
                     <input
-                      id="contact-company"
+                      id="contact-hp-confirm"
+                      name="hp-confirm"
                       type="text"
                       tabIndex={-1}
                       autoComplete="off"
-                      value={company}
-                      onChange={(e) => setCompany(e.target.value)}
+                      value={trap}
+                      onChange={(e) => setTrap(e.target.value)}
                     />
                   </div>
 

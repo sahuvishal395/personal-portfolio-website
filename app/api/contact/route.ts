@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { site } from '../../data/site';
-import { enquiryTopics } from '../../data/enquiry';
+import { enquiryTopics, enquiryTriggers } from '../../data/enquiry';
 
 // Length limits keep one request from producing a huge email.
 const MAX = { name: 100, email: 254, message: 5000, page: 200 };
@@ -19,13 +19,18 @@ const WINDOW_MS = 10 * 60 * 1000;
 const LIMIT = 5;
 const recentByIp = new Map<string, number[]>();
 
+// Only accepted messages count, so rejected retries don't extend the wait.
 function rateLimited(ip: string) {
   const now = Date.now();
   const recent = (recentByIp.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
-  recent.push(now);
+  if (recent.length >= LIMIT) {
+    recentByIp.set(ip, recent);
+    return true;
+  }
   if (recentByIp.size > 1000) recentByIp.clear();
+  recent.push(now);
   recentByIp.set(ip, recent);
-  return recent.length > LIMIT;
+  return false;
 }
 
 function text(value: unknown) {
@@ -50,7 +55,41 @@ function escapeHtml(value: string) {
 const sent = () =>
   NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
 
+// A site path such as /blogs/geo-tools, or '' if the value isn't one.
+function sitePath(value: unknown) {
+  const path = text(value).trim();
+  return path.length <= MAX.page && /^\/[\w\-./]*$/.test(path) ? path : '';
+}
+
+// Dropped messages are logged without personal data, so a silent filter
+// can still be spotted in the Vercel logs.
+function logDropped(reason: string, body: Record<string, unknown>) {
+  console.warn(
+    `Contact form: dropped (${reason}) source=${oneLine(text(body.source)).slice(0, 20)} page=${sitePath(body.page)}`
+  );
+}
+
 export async function POST(request: Request) {
+  // Only this site's own pages may post here. Browsers send Origin with
+  // cross-site requests, and requiring JSON forces a CORS preflight that
+  // other sites can't pass, so they can't make visitors' browsers send mail.
+  const origin = request.headers.get('origin');
+  if (origin) {
+    let originHost = '';
+    try {
+      originHost = new URL(origin).host;
+    } catch {}
+    if (originHost !== request.headers.get('host')) {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+    }
+  }
+  if (!(request.headers.get('content-type') ?? '').includes('application/json')) {
+    return NextResponse.json({ error: 'Invalid request' }, { status: 415 });
+  }
+  if (Number(request.headers.get('content-length') ?? 0) > 20_000) {
+    return NextResponse.json({ error: 'Message too long' }, { status: 413 });
+  }
+
   let body: Record<string, unknown>;
   try {
     body = await request.json();
@@ -58,10 +97,28 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
   }
 
+  if (!body || typeof body !== 'object' || Array.isArray(body)) {
+    return NextResponse.json({ error: 'Invalid request' }, { status: 400 });
+  }
+
   // Honeypot: a field real visitors never see or fill in.
-  if (text(body.company).trim()) return sent();
+  if (text(body.hp).trim()) {
+    logDropped('honeypot', body);
+    return sent();
+  }
+  // A page opened before the forms sent this field can't pass the check;
+  // tell that visitor to reload rather than silently dropping the message.
+  if (body.elapsedMs === undefined) {
+    return NextResponse.json(
+      { error: 'Please reload the page and send your message again.' },
+      { status: 400 }
+    );
+  }
   const elapsedMs = Number(body.elapsedMs);
-  if (!Number.isFinite(elapsedMs) || elapsedMs < MIN_FILL_MS) return sent();
+  if (!Number.isFinite(elapsedMs) || elapsedMs < MIN_FILL_MS) {
+    logDropped('too fast', body);
+    return sent();
+  }
 
   const name = oneLine(text(body.name));
   const email = text(body.email).trim();
@@ -70,32 +127,35 @@ export async function POST(request: Request) {
     ? text(body.topic)
     : '';
   const source = body.source === 'popup' ? 'Enquiry pop-up' : 'Contact page';
-  const pagePath = oneLine(text(body.page));
-  const page =
-    pagePath.startsWith('/') && pagePath.length <= MAX.page ? pagePath : '';
+  const page = sitePath(body.page);
+  const trigger = Object.hasOwn(enquiryTriggers, text(body.trigger))
+    ? enquiryTriggers[text(body.trigger) as keyof typeof enquiryTriggers]
+    : '';
+  // How the visit started: landing path, referring hostname, utm_source.
+  const landing = sitePath(body.landing);
+  const referrer = /^[a-z0-9.-]{1,100}$/i.test(text(body.referrer)) ? text(body.referrer) : '';
+  const utm = /^[\w.-]{1,60}$/.test(text(body.utm)) ? text(body.utm) : '';
 
+  const invalid = (error: string) =>
+    NextResponse.json({ error }, { status: 400 });
   if (!name || !email || !message) {
-    return NextResponse.json(
-      { error: 'Name, email, and message are required' },
-      { status: 400 }
-    );
+    return invalid('Please fill in your name, email and message.');
   }
-  if (
-    name.length > MAX.name ||
-    email.length > MAX.email ||
-    message.length > MAX.message ||
-    !EMAIL_RE.test(email)
-  ) {
-    return NextResponse.json(
-      { error: 'Please check your name, email address and message.' },
-      { status: 400 }
-    );
+  if (name.length > MAX.name) {
+    return invalid('Please shorten your name to 100 characters.');
+  }
+  if (email.length > MAX.email || !EMAIL_RE.test(email)) {
+    return invalid('Please enter a full email address, like name@company.com.');
+  }
+  if (message.length > MAX.message) {
+    return invalid('Please keep your message under 5,000 characters.');
   }
 
   const ip =
     (request.headers.get('x-forwarded-for') ?? '').split(',')[0].trim() ||
     'unknown';
   if (rateLimited(ip)) {
+    logDropped('rate limit', body);
     return NextResponse.json(
       { error: 'Too many messages. Please try again in a few minutes.' },
       { status: 429 }
@@ -108,10 +168,18 @@ export async function POST(request: Request) {
   }
 
   const label = topic || 'General';
-  const where = page ? `${source} on ${page}` : source;
+  const via = trigger && trigger !== 'contact page' ? ` (${trigger})` : '';
+  const where = `${source}${via}${page ? ` on ${page}` : ''}`;
   const pageLink = page
     ? ` on <a href="${escapeHtml(site.url + page)}">${escapeHtml(page)}</a>`
     : '';
+  const visit = [
+    landing && `landed on ${landing}`,
+    referrer ? `from ${referrer}` : landing && 'directly or from an app',
+    utm && `utm_source=${utm}`,
+  ]
+    .filter(Boolean)
+    .join(', ');
 
   try {
     const transporter = nodemailer.createTransport({
@@ -132,6 +200,7 @@ export async function POST(request: Request) {
         `Email: ${email}`,
         `Topic: ${label}`,
         `Sent from: ${where}`,
+        ...(visit ? [`Visit: ${visit}`] : []),
         '',
         'Message:',
         message,
@@ -141,9 +210,10 @@ export async function POST(request: Request) {
           <h2 style="margin: 0 0 12px; font-size: 18px;">New enquiry from your website</h2>
           <table cellpadding="6" style="border-collapse: collapse;">
             <tr><td style="color: #46527a;">Name</td><td><strong>${escapeHtml(name)}</strong></td></tr>
-            <tr><td style="color: #46527a;">Email</td><td><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>
+            <tr><td style="color: #46527a;">Email</td><td><a href="mailto:${escapeHtml(encodeURIComponent(email).replace(/%40/g, '@'))}">${escapeHtml(email)}</a></td></tr>
             <tr><td style="color: #46527a;">Topic</td><td>${escapeHtml(label)}</td></tr>
-            <tr><td style="color: #46527a;">Sent from</td><td>${escapeHtml(source)}${pageLink}</td></tr>
+            <tr><td style="color: #46527a;">Sent from</td><td>${escapeHtml(source + via)}${pageLink}</td></tr>
+            ${visit ? `<tr><td style="color: #46527a;">Visit</td><td>${escapeHtml(visit)}</td></tr>` : ''}
           </table>
           <p style="margin: 16px 0 6px; color: #46527a;">Message</p>
           <div style="white-space: pre-wrap; border-left: 4px solid #e23636; padding: 8px 12px; background: #f1f3fa;">${escapeHtml(message)}</div>
