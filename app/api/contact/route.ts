@@ -12,24 +12,28 @@ const MIN_FILL_MS = 2500;
 
 const EMAIL_RE = /^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[^\s@<>()",;:]{2,}$/;
 
-// At most 5 messages per IP every 10 minutes. Serverless instances don't
-// share memory, so this only slows bursts; the honeypot and timing checks
-// do most of the filtering.
-const WINDOW_MS = 10 * 60 * 1000;
-const LIMIT = 5;
+// At most 5 messages per IP every 10 minutes and 20 a day, which keeps one
+// sender from using up Gmail's daily sending quota. Serverless instances
+// don't share memory, so this only slows bursts; the honeypot, timing and
+// origin checks do most of the filtering.
+const BURST_WINDOW_MS = 10 * 60 * 1000;
+const BURST_LIMIT = 5;
+const DAY_WINDOW_MS = 24 * 60 * 60 * 1000;
+const DAY_LIMIT = 20;
 const recentByIp = new Map<string, number[]>();
 
 // Only accepted messages count, so rejected retries don't extend the wait.
 function rateLimited(ip: string) {
   const now = Date.now();
-  const recent = (recentByIp.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
-  if (recent.length >= LIMIT) {
-    recentByIp.set(ip, recent);
+  const today = (recentByIp.get(ip) ?? []).filter((t) => now - t < DAY_WINDOW_MS);
+  const burst = today.filter((t) => now - t < BURST_WINDOW_MS).length;
+  if (burst >= BURST_LIMIT || today.length >= DAY_LIMIT) {
+    recentByIp.set(ip, today);
     return true;
   }
   if (recentByIp.size > 1000) recentByIp.clear();
-  recent.push(now);
-  recentByIp.set(ip, recent);
+  today.push(now);
+  recentByIp.set(ip, today);
   return false;
 }
 
@@ -83,7 +87,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
   }
-  if (!(request.headers.get('content-type') ?? '').includes('application/json')) {
+  if (!/^application\/json\s*(;|$)/i.test(request.headers.get('content-type') ?? '')) {
     return NextResponse.json({ error: 'Invalid request' }, { status: 415 });
   }
   if (Number(request.headers.get('content-length') ?? 0) > 20_000) {
