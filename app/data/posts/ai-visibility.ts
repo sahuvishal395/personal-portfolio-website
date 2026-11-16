@@ -87,7 +87,9 @@ Choose prompts for AI search tracking from the questions your buyers ask, groupe
 
 ## Why do AI answers change from day to day?
 
-AI answers change from day to day because each run generates a fresh response: the engine often searches the web differently and cites other pages. In [Ahrefs' October 2026 study](https://ahrefs.com/blog/how-stable-are-ai-citations/) of about 37,500 citations tracked for 20 days across five AI tools, at least half disappeared by the next day. ChatGPT repeated the previous day's exact searches only 26% of the time, yet Ahrefs says its data "suggests much of the churn happens after the search, when the AI decides which pages to cite." Roughly 75% of the citations that disappeared at least once came back within the 20 days.
+AI answers change from day to day because each run generates a fresh response: the engine often searches the web differently and cites other pages.
+
+In [Ahrefs' October 2026 study](https://ahrefs.com/blog/how-stable-are-ai-citations/) of about 37,500 citations tracked for 20 days across five AI tools, at least half disappeared by the next day. ChatGPT repeated the previous day's exact searches only 26% of the time, yet Ahrefs says its data "suggests much of the churn happens after the search, when the AI decides which pages to cite." Roughly 75% of the citations that disappeared at least once came back within the 20 days.
 
 [SparkToro's study](https://sparktoro.com/blog/new-research-ais-are-highly-inconsistent-when-recommending-brands-or-products-marketers-should-take-care-when-tracking-ai-visibility/) with Patrick O'Donnell of Gumshoe.ai, an AI-tracking startup, had 600 volunteers run 12 prompts through ChatGPT, Claude and Google's AI a combined 2,961 times in November and December 2025. The study found less than a 1 in 100 chance that ChatGPT or Google's AI would give the same list of brands in any two of 100 responses.
 

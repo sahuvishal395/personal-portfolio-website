@@ -20,7 +20,9 @@ The gap between those two numbers is the shortest explanation of generative engi
 
 ## What is generative engine optimization?
 
-Generative engine optimization (GEO) is the work of shaping your pages, and what the rest of the web says about your brand, so that AI systems find your information and cite or mention you in their answers. A generative engine is an AI system that searches for information and writes its own answer from several sources. ChatGPT search, Perplexity, Microsoft Copilot, Gemini and two Google features work this way: AI Overviews, the AI-written summaries above some Google results, and AI Mode, Google's chat-style search.
+Generative engine optimization (GEO) is the work of shaping your pages, and what the rest of the web says about your brand, so that AI systems find your information and cite or mention you in their answers.
+
+A generative engine is an AI system that searches for information and writes its own answer from several sources. ChatGPT search, Perplexity, Microsoft Copilot, Gemini and two Google features work this way: AI Overviews, the AI-written summaries above some Google results, and AI Mode, Google's chat-style search.
 
 The term was introduced in a paper first posted in November 2023, [GEO: Generative Engine Optimization](https://arxiv.org/abs/2311.09735), by Pranjal Aggarwal and five co-authors. The revised version, [published at KDD 2024](https://doi.org/10.1145/3637528.3671900), describes GEO as "a new paradigm where content creators aim to increase their visibility (or impression) in generative engine responses." Microsoft uses the term too, calling its Bing Webmaster Tools report on Copilot citations ["an early step toward Generative Engine Optimization (GEO) tooling."](https://blogs.bing.com/webmaster/2026/2/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview/)
 
@@ -94,9 +96,11 @@ For a B2B company the loss is hard to spot. A buyer asks ChatGPT for the best cr
 
 ## Is GEO the same as SEO or AEO?
 
-GEO is not the same as SEO or AEO, but it builds on both. Google's position is that, for its own results, "optimizing for generative AI search is optimizing for the search experience, and thus still SEO." ChatGPT search and Perplexity also crawl and search the web before they answer, so pages they can crawl and index start ahead. The differences are in the goal (cited rather than ranked) and the unit that competes (a passage more than a page), which I compare side by side in my post on [GEO vs SEO](/blogs/geo-vs-seo).
+GEO is not the same as SEO or AEO, but it builds on both. Google's position is that, for its own results, "optimizing for generative AI search is optimizing for the search experience, and thus still SEO."
 
-Answer engine optimization (AEO) is an older term for winning direct answers such as featured snippets and voice results. Many teams now use AEO and GEO interchangeably; my guide to [what is AEO](/blogs/what-is-aeo) explains where they differ.
+ChatGPT search and Perplexity also crawl and search the web before they answer, so pages they can crawl and index start ahead. The differences are in the goal (cited rather than ranked) and the unit that competes (a passage more than a page), which I compare side by side in my post on [GEO vs SEO](/blogs/geo-vs-seo).
+
+Answer engine optimization (AEO) is an older term for winning direct answers such as featured snippets and voice results. Many teams now use AEO and GEO interchangeably; my answer to "[what is AEO](/blogs/what-is-aeo)" explains where they differ.
 
 ## What does GEO work look like in practice?
 
@@ -123,12 +127,14 @@ The most common GEO mistakes are blocking AI crawlers by accident, expecting llm
 
 ## Where should you start with GEO?
 
-Start generative engine optimization by finding out where your brand already appears in AI answers. Pick ten questions your buyers would ask, run them in ChatGPT, Perplexity and Google's AI Overviews or AI Mode, and note every domain that gets cited. Check that robots.txt and your CDN let the AI crawlers in. Then rewrite the top of your most important page so its first two sentences answer its main question.
+Start generative engine optimization by finding out where your brand already appears in AI answers.
+
+Pick ten questions your buyers would ask, run them in ChatGPT, Perplexity and Google's AI Overviews or AI Mode, and note every domain that gets cited. Check that robots.txt and your CDN let the AI crawlers in. Then rewrite the top of your most important page so its first two sentences answer its main question.
 
 That small test shows which sources the engines trust in your category and whether you are one of them.
 `.trim(),
   tags: ["GEO", "AI Search", "SEO"],
-  readingTime: "13 min read",
+  readingTime: "14 min read",
   featured: true,
   keyTakeaways: [
     "Generative engine optimization (GEO) is the practice of getting your content found and cited by AI systems such as ChatGPT, Perplexity and Google AI Overviews.",
@@ -161,12 +167,12 @@ That small test shows which sources the engines trust in your category and wheth
     {
       question: "Do you need llms.txt or special markup for GEO?",
       answer:
-        "No. Google says you don't need AI text files or special schema.org markup for its AI features and that Google Search ignores llms.txt, and OpenAI's and Perplexity's crawler docs don't mention it. Structured data is still worth using for rich results if it matches what is visible on the page.",
+        "No. Google says you don't need AI text files or special schema.org markup for its AI features and that Google Search ignores llms.txt, and OpenAI's and Perplexity's crawler docs don't say their crawlers use it. Structured data is still worth using for rich results if it matches what is visible on the page.",
     },
     {
       question: "Can small websites compete in GEO?",
       answer:
-        "Possibly. The original study only tested pages already in Google's top five, but the lower-ranked ones gained the most: with Cite Sources applied to all five, the fifth-ranked page's visibility rose 115.1% while the top-ranked page's fell 30.3% on average. The authors read this as an opening for small creators and independent businesses.",
+        "Possibly. The 2023 GEO paper (KDD 2024) only tested pages already in Google's top five, but the lower-ranked ones gained the most: when its Cite Sources method, which adds relevant citations from credible sources, was applied to all five, the fifth-ranked page's visibility rose 115.1% while the top-ranked page's fell 30.3% on average. The authors read this as an opening for small creators and independent businesses.",
     },
     {
       question: "How do you measure GEO?",

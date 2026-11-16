@@ -16,7 +16,7 @@ Key facts:
 
 ## Case studies
 
-- [SEO and AI search case studies](https://www.vishalkumarsahu.com/seo): Seven SEO and GEO/AEO case studies from TestMu AI (formerly LambdaTest), with the numbers behind each.
+- [SEO and AI search case studies](https://www.vishalkumarsahu.com/seo): Seven SEO and GEO/AEO case studies from TestMu AI (formerly LambdaTest), most with the numbers behind them.
 - [SEO for the LambdaTest to TestMu AI rebrand](https://www.vishalkumarsahu.com/seo#rebrand-seo-migration): Redirect maps, sitemap and robots.txt cleanup, Organization schema, and updated brand profiles on Wikidata, G2, LinkedIn and GitHub.
 - [Getting cited in ChatGPT, Perplexity and Gemini answers](https://www.vishalkumarsahu.com/seo#ai-search-geo-aeo): Set up AI search tracking in Profound, where TestMu AI ranks 9th of 142 domains for citation share, and planned Quora answers around 139 threads that AI tools already cite.
 - [Fixing indexation on templated pages at scale](https://www.vishalkumarsahu.com/seo#templated-pages-indexation): Merged 118 thin Chrome version pages into one hub with 301s, and wrote content and schema for 51 free-tool pages that had launched with no body copy.

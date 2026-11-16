@@ -35,8 +35,8 @@ AI visibility tools send your prompts to each AI engine on a schedule, through t
 | Peec AI | "UI scraping" that reflects "the reality for a logged-out user" | "once every 24 hours" |
 | Scrunch | "browser automation and official platform APIs" | Daily for a new prompt's first 14 days, then every 72 hours by default |
 | Conductor | "official LLM APIs" | Not stated on the linked page |
-| Ahrefs Brand Radar | Not stated on the linked page | Index "re-tested monthly on a 90-day reporting window"; custom prompts daily, weekly or monthly |
-| Semrush AI Visibility Toolkit | Not stated on the linked page | Prompt Tracking daily; Brand Performance reports weekly |
+| Ahrefs Brand Radar | Runs prompts "through each AI platform and stores the responses"; also tracks searches that "trigger an AI answer inside Google Search"; browser or API not stated | Index "re-tested monthly on a 90-day reporting window"; custom prompts daily, weekly or monthly |
+| Semrush AI Visibility Toolkit | Brand Performance reports run "a vast collection of common queries" through "LLMs like ChatGPT and Google's AI Mode"; browser or API not stated | Prompt Tracking daily; Brand Performance reports weekly |
 | Similarweb AI Citation Analysis | Not stated on the linked page | Citations tracked daily |
 
 Sources: [Profound](https://www.tryprofound.com/features/answer-engine-insights), [SE Visible](https://visible.seranking.com/), [Peec AI docs](https://docs.peec.ai/intro-to-peec-ai), [Peec AI](https://peec.ai/geo-report), [Scrunch](https://scrunch.com/faqs/what-methods-does-scrunch-use-to-collect-data-from-ai-platforms), [Conductor](https://www.conductor.com/lp/enterprise-ai-visibility-optimization/), [Ahrefs](https://ahrefs.com/brand-radar), [Semrush](https://www.semrush.com/kb/1493-ai-visibility-toolkit), [Similarweb](https://aisearch.similarweb.com/ai-brand-visibility/citation-analysis/).
@@ -61,8 +61,8 @@ The table leaves out prices; check current pricing on each paid tool's site.
 | Profound | Dedicated tracker | Daily prompt tracking across many engines | ChatGPT, Perplexity, Claude, Google AI Overviews, Google AI Mode, Google Gemini, Exa, Muse Spark, Qwen, DeepSeek | Visibility score, share of voice, sentiment, citation sources, competitor rankings | Free trial |
 | Peec AI | Dedicated tracker | A long list of engines and Looker Studio reports | ChatGPT, Perplexity, Gemini, AI Overviews, AI Mode, Copilot, Claude, Grok, DeepSeek, Muse Spark, Mistral, Qwen, Naver AI Briefing | Visibility (share of chats naming you), position | Free GEO report; 7-day trial |
 | OtterlyAI | Dedicated tracker | Prompt tracking plus free utilities and a public API | ChatGPT, AI Overviews, AI Mode, Gemini, Claude, Perplexity, Copilot | Brand mentions, website citations | 7-day trial; free tools |
-| Scrunch | Dedicated tracker | Full answer text and aggregated metrics by API | ChatGPT, Perplexity, Gemini, Claude, AI Mode, AI Overviews, Copilot, Meta AI | Brand presence, sentiment, citations | 7-day trial |
-| AthenaHQ | Dedicated tracker | Starting on a free tier | All plans: ChatGPT, Perplexity, Gemini, AI Overviews, Copilot; paid plans add AI Mode, Claude, Grok, DeepSeek, Meta AI | Prompt and response analysis, sources, competitor insights | Free Essential plan |
+| Scrunch | Dedicated tracker | Full answer text and aggregated metrics by API | ChatGPT, Perplexity, Gemini, Claude, AI Mode, AI Overviews, Copilot, Grok, Meta AI | Brand presence, sentiment, citations | 7-day trial |
+| AthenaHQ | Dedicated tracker | Starting on a free tier | All plans: ChatGPT, Perplexity, Gemini, AI Overviews, Copilot; paid plans add AI Mode, Claude, Grok, DeepSeek, Meta AI (FAQ; the Starter plan card also lists Mistral) | Prompt and response analysis, sources, competitor insights | Free Essential plan |
 | Conductor | Enterprise platform | AI visibility next to web analytics and traditional search data | ChatGPT, Perplexity, Claude, Gemini, Google AI Overviews (through official APIs) | Mentions, citations, sentiment, traffic through GA4 or Adobe | Free AI Visibility Analysis; 3-week trial |
 | BrightEdge AI Catalyst | Enterprise platform | Mentions and citations reported separately | ChatGPT, Perplexity, AI Overviews, AI Mode, Gemini "and other AI platforms" | Mentions Presence, Citations Presence, competitor benchmarks | None stated |
 
@@ -102,7 +102,7 @@ Profound, Peec AI, OtterlyAI, Scrunch and AthenaHQ are LLM tracking tools built 
 
 ### Profound
 
-Profound, the tracker I set up for TestMu AI, queries ten AI platforms, from ChatGPT and Perplexity to Qwen and DeepSeek. Its [Answer Engine Insights](https://www.tryprofound.com/features/answer-engine-insights) page lists "visibility scores and share of voice, brand sentiment and keyword themes, citation sources and their authority, and competitor rankings," with CSV export, and [Agent Analytics](https://www.tryprofound.com/features/agent-analytics) tracks "when, how often, and which AI bots access your content."
+Profound, the tracker I set up for TestMu AI, says it queries ten AI platforms, from ChatGPT and Perplexity to Qwen and DeepSeek. Its [Answer Engine Insights](https://www.tryprofound.com/features/answer-engine-insights) page lists "visibility scores and share of voice, brand sentiment and keyword themes, citation sources and their authority, and competitor rankings," with CSV export, and [Agent Analytics](https://www.tryprofound.com/features/agent-analytics) tracks "when, how often, and which AI bots access your content."
 
 ### Peec AI
 
@@ -114,11 +114,11 @@ Profound, the tracker I set up for TestMu AI, queries ten AI platforms, from Cha
 
 ### Scrunch
 
-Scrunch tracks brand presence on [eight AI platforms](https://scrunch.com/faqs/which-ai-platforms-and-llms-can-scrunch-track-and-monitor), including Meta AI, and [says it](https://scrunch.com/faqs/how-accurate-is-scrunch-at-tracking-brand-presence-across-llms) counts only "explicit brand mentions," so a citation alone doesn't register as a mention. Its [responses API](https://scrunch.com/faqs/what-apis-does-scrunch-offer-and-how-do-they-work) returns the full text of each AI answer, with citations, competitor presence and metadata.
+Scrunch tracks brand presence on [nine AI platforms](https://scrunch.com/faqs/which-ai-platforms-and-llms-can-scrunch-track-and-monitor), including Grok and Meta AI, and [says it](https://scrunch.com/faqs/how-accurate-is-scrunch-at-tracking-brand-presence-across-llms) counts only "explicit brand mentions," so a citation alone doesn't register as a mention. Its [responses API](https://scrunch.com/faqs/what-apis-does-scrunch-offer-and-how-do-they-work) captures "full AI answers, citations, sentiment, competitors, and metadata" for every prompt run.
 
 ### AthenaHQ
 
-[AthenaHQ](https://athenahq.ai/) has a free Essential plan with prompt and response analysis and competitor insights, while paid plans add five engines, including Google AI Mode and Claude. AthenaHQ says it "tells you what to fix." API access is a paid add-on.
+[AthenaHQ](https://athenahq.ai/) has a free Essential plan with prompt and response analysis and competitor insights, while paid plans add engines including Google AI Mode and Claude. AthenaHQ says it "tells you what to fix." API access is a paid add-on.
 
 ## Which AI visibility platforms suit enterprise teams?
 
@@ -136,7 +136,7 @@ Conductor and BrightEdge suit enterprise teams that want AI visibility inside a 
 
 Choose an AI visibility tool by testing, during a trial, which engines your plan covers, how often prompts rerun, whether mentions and citations are counted separately, how answers are collected and what you can export.
 
-1. Check the engines on your plan. AthenaHQ adds five engines only on paid plans, SE Visible's FAQ and plan list disagree on Claude and Copilot, and Semrush's engine list differs by product.
+1. Check the engines on your plan. AthenaHQ adds Google AI Mode, Claude and other engines only on paid plans, SE Visible's FAQ and plan list disagree on Claude and Copilot, and Semrush's engine list differs by product.
 2. Ask how often prompts rerun: daily for Profound, SE Visible, Peec AI and Semrush's Prompt Tracking, and monthly for Ahrefs' prebuilt index.
 3. Check whether mentions and citations get their own numbers; [Ahrefs](https://ahrefs.com/ai-visibility-checker) says "Brand Radar tracks both separately." Merged counts hide ghost citations (links in answers that never name the brand), which made up 61.7% of 3,981 domain appearances across 115 prompts in a [June 2026 Semrush and Growth Memo study](https://www.semrush.com/blog/the-ghost-citations-study/).
 4. Give share metrics more weight than position. Semrush, Peec AI, SE Visible and [Profound](https://docs.tryprofound.com/answer-engine-insights/about) all report a position metric, though Profound [also says](https://www.tryprofound.com/features/answer-engine-insights) "AI platforms don't return the same answer twice." Read any position next to your [share of runs](/blogs/ai-visibility).

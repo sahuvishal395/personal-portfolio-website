@@ -68,7 +68,7 @@ export default function BlogsIndexClient({ posts, tags: allTags }: Props) {
             className="tag-pill cursor-pointer transition-all duration-200"
             style={{
               background: !selectedTag ? "var(--accent)" : "var(--accent-light)",
-              color: !selectedTag ? "white" : "var(--accent)",
+              color: !selectedTag ? "var(--background)" : "var(--accent)",
             }}
           >
             All
@@ -81,7 +81,7 @@ export default function BlogsIndexClient({ posts, tags: allTags }: Props) {
               style={{
                 background:
                   tag === selectedTag ? "var(--accent)" : "var(--accent-light)",
-                color: tag === selectedTag ? "white" : "var(--accent)",
+                color: tag === selectedTag ? "var(--background)" : "var(--accent)",
               }}
             >
               {tag}

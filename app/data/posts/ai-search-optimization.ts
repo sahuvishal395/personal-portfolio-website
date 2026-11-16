@@ -10,7 +10,7 @@ export const aiSearchOptimization: BlogPost = {
   excerpt:
     "AI search optimization in 8 steps: crawler access, Google and Bing AI reports, indexing, entity schema and prompts, each with a check, plus agentic SEO.",
   summary:
-    "AI search optimization is the work of making a site and brand easy for Google AI Overviews and AI Mode, ChatGPT search, Perplexity and Microsoft Copilot to crawl, understand and cite. The process takes eight steps, each with a check that it worked, from letting AI crawlers past your CDN to measuring a fixed set of prompts monthly.",
+    "AI search optimization is the work of making a site and brand easy for Google AI Overviews and AI Mode, ChatGPT search, Perplexity and Microsoft Copilot to crawl, understand and cite. The process takes eight steps, each with a check that it worked, from letting AI crawlers past your CDN to measuring a fixed prompt set over repeated runs.",
   content: `
 When LambdaTest became TestMu AI, I ran the SEO for [the rebrand](/seo#rebrand-seo-migration): redirect maps, sitemap and robots.txt cleanup, Organization schema, and updated profiles on Wikidata, G2, LinkedIn and GitHub so the old name and the new one resolve to the same company.
 
@@ -30,13 +30,13 @@ You optimize for AI search in eight steps: let AI crawlers in, set up Google's a
 
 | Step | Where you do it | How to check it worked |
 | --- | --- | --- |
-| 1. Let AI crawlers in | robots.txt, plus your CDN or firewall (in Cloudflare: Security > Settings > AI Crawler and Agent access policies) | Server logs show OAI-SearchBot and PerplexityBot getting 200 responses from IPs on their published lists within about 24 hours of a robots.txt change |
-| 2. Set up Google's and Bing's AI reports | Search Console: Settings > Search generative AI, then the Generative AI performance report; Bing Webmaster Tools: AI Performance; an IndexNow key file | The Search generative AI control includes your site, both AI reports show data, and IndexNow returns HTTP 200 |
+| 1. Let AI crawlers in | robots.txt, plus your CDN or firewall (in Cloudflare: Security > Settings > AI Crawler and Agent access policies) | Server logs show OAI-SearchBot and PerplexityBot getting 200 responses from IPs on their published lists (OpenAI's and Perplexity's systems can take up to about 24 hours to reflect a robots.txt change) |
+| 2. Set up Google's and Bing's AI reports | Search Console: Settings > Search generative AI, then the Generative AI performance report; Bing Webmaster Tools: AI Performance; an IndexNow key file | The Search generative AI control includes your site, both AI reports show data (a site with few AI impressions may not see Google's report yet), and IndexNow returns HTTP 200 |
 | 3. Fix indexing | Search Console's page indexing report and URL Inspection, plus a site crawler | The Google-selected canonical matches yours, and each old URL reaches its final page in one redirect |
 | 4. Serve content in the HTML | Server rendering or static generation in your framework | Key sentences appear in the raw HTML with JavaScript off, and URL Inspection's live test screenshot shows them |
 | 5. Make the brand one entity | Organization markup on the home or about page; Wikidata, G2, LinkedIn and GitHub | The Rich Results Test shows no critical errors, and AI answers describe your brand, and any former name, as one company |
 | 6. Answer each question up front | The pages with the most AI impressions or citations | The first two sentences under each heading answer that heading's question on their own |
-| 7. Earn mentions | Domains cited for your prompts, such as forums and review sites | Monthly re-runs show whether those sources now mention you |
+| 7. Earn mentions | Domains cited for your prompts, such as forums and review sites | Repeated runs, compared month over month, show whether those sources now mention you |
 | 8. Measure a prompt set | A spreadsheet or tracker, plus Search Console and Bing Webmaster Tools | The share of runs that mention or cite you, compared month over month |
 
 Sources: [OpenAI](https://developers.openai.com/api/docs/bots), [Perplexity](https://docs.perplexity.ai/docs/resources/perplexity-crawlers), [Cloudflare](https://developers.cloudflare.com/bots/additional-configurations/block-ai-bots/), [Search Console](https://support.google.com/webmasters/answer/16908024), [Bing Webmaster Tools](https://blogs.bing.com/webmaster/2026/2/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview/), [IndexNow](https://www.indexnow.org/documentation), [URL Inspection](https://support.google.com/webmasters/answer/9012289), [Google's Organization markup](https://developers.google.com/search/docs/appearance/structured-data/organization).
@@ -55,7 +55,7 @@ In Search Console, open [Settings > Search generative AI](https://support.google
 
 Bing Webmaster Tools' [AI Performance report](https://blogs.bing.com/webmaster/2026/2/Introducing-AI-Performance-in-Bing-Webmaster-Tools-Public-Preview/) shows how often your content is cited in Microsoft Copilot, AI-generated summaries in Bing and select partner integrations. IndexNow notifies participating search engines when content is added, updated or removed, which Microsoft says "helps keep information fresh across search and AI experiences." Set up [IndexNow](https://www.indexnow.org/documentation) with a CMS plugin, which its [FAQ](https://www.indexnow.org/faq) says to check for first, or with a key file; Google isn't a listed endpoint, so keep sitemaps in Search Console.
 
-You're set up when the Search generative AI control includes your site and both AI reports show data. An IndexNow HTTP 200 only means the URL was received.
+You're set up when the Search generative AI control includes your site and both AI reports show data. Google says a missing report usually means too few impressions in its AI features. An IndexNow HTTP 200 only means the URL was received.
 
 ### Step 3: Fix canonicals, noindex tags and redirect chains
 
@@ -71,7 +71,7 @@ In [Vercel's December 2024 analysis](https://vercel.com/blog/the-rise-of-the-ai-
 
 Server-render the main content, titles and descriptions, and menus, as Vercel advises. At TestMu AI, 51 free-tool pages launched with no body copy, and I wrote their content and schema.
 
-To check, find your key sentences in the raw HTML or with JavaScript turned off. In URL Inspection, run a live test and open View tested page for a screenshot of the rendered page and the raw HTML.
+To check, find your key sentences in the raw HTML or with JavaScript turned off. In URL Inspection, a live test's View tested page shows the page as Google rendered it, including content added by JavaScript.
 
 ### Step 5: Make your brand one entity
 
@@ -93,9 +93,9 @@ Test each section by reading its first two sentences alone, then compare those p
 
 List the domains AI answers cite for your prompts, then take part there genuinely and keep review profiles current; Google warns that seeking inauthentic mentions "isn't as helpful as it might seem." In [Ahrefs' November 2026 study](https://ahrefs.com/blog/mention-types-ai-visibility/), Reddit was the strongest signal (a Spearman correlation of about 0.75 with AI mentions), and brands with 10x more webpage mentions got 3.7x more AI mentions, though Ahrefs says it can't show that mentions cause AI visibility.
 
-Step 8's monthly prompt runs show whether those sources start to mention you.
+Step 8's prompt runs show whether those sources start to mention you.
 
-### Step 8: Measure a fixed prompt set monthly
+### Step 8: Measure a fixed prompt set over repeated runs
 
 A prompt set is a fixed list of buyer questions you run through ChatGPT, Perplexity and other AI engines on a schedule. My keyword pipeline for TestMu AI cut 1,652 keywords from 19 competitor domains to 14 topic clusters and 40 quick wins, and a prompt set needs the same narrowing. My [AI visibility](/blogs/ai-visibility) guide shows how to build the set and what to measure, and my [GEO tools](/blogs/geo-tools) post compares trackers.
 
@@ -133,7 +133,9 @@ Run Lighthouse's experimental [Agentic Browsing](https://developer.chrome.com/do
 
 ## Where should you start with AI search optimization?
 
-Start AI search optimization with the settings that can block everything else: the AI crawler rules in your CDN or firewall, and the Search generative AI control in Search Console. Then run URL Inspection on, say, your ten most important pages, and write a starting set of 20 to 30 buyer prompts. Run each prompt a few times in ChatGPT, Perplexity and Google AI Mode, and note every cited domain. Rewrite pages after that, starting with the ones you expected those prompts to cite.
+Start AI search optimization with the settings that can block everything else: the AI crawler rules in your CDN or firewall, and the Search generative AI control in Search Console.
+
+Then run URL Inspection on, say, your ten most important pages, and write a starting set of 20 to 30 buyer prompts. Run each prompt a few times in ChatGPT, Perplexity and Google AI Mode, and note every cited domain. Rewrite pages after that, starting with the ones you expected those prompts to cite.
 `.trim(),
   tags: ["AI Search", "SEO", "GEO"],
   readingTime: "12 min read",
@@ -149,7 +151,7 @@ Start AI search optimization with the settings that can block everything else: t
     {
       question: "How do I optimize for AI search?",
       answer:
-        "To optimize a site for AI search, start with access: let OAI-SearchBot, PerplexityBot, Googlebot and Bingbot through robots.txt and your CDN, fix canonicals and redirects, and keep main content in the server HTML. Then keep brand details consistent, answer questions up front, earn genuine mentions and track a fixed prompt set monthly.",
+        "To optimize a site for AI search, start with access: let OAI-SearchBot, PerplexityBot, Googlebot and Bingbot through robots.txt and your CDN, fix canonicals and redirects, and keep main content in the server HTML. Then keep brand details consistent, answer questions up front, earn genuine mentions and track a fixed prompt set over repeated runs.",
     },
     {
       question: "What is AI search optimization called?",

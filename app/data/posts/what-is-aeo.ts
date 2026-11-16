@@ -22,7 +22,9 @@ Much of what Google and Microsoft now say about AI answers repeats featured-snip
 
 ## What is AEO (answer engine optimization)?
 
-Answer engine optimization (AEO) is the practice of structuring content so search engines and AI assistants can use it as the direct answer to a question. An answer engine is a search system that replies to a question directly, usually linking to its source. Answer engines include ChatGPT search, Perplexity, Microsoft Copilot and Google Search, which answers questions in featured snippets, AI Overviews (AI-written summaries above some results) and AI Mode (Google's chat-style search).
+Answer engine optimization (AEO) is the practice of structuring content so search engines and AI assistants can use it as the direct answer to a question. An answer engine is a search system that replies to a question directly, usually linking to its source.
+
+Answer engines include ChatGPT search, Perplexity, Microsoft Copilot and Google Search, which answers questions in featured snippets, AI Overviews (AI-written summaries above some results) and AI Mode (Google's chat-style search).
 
 [Wikipedia's article](https://en.wikipedia.org/wiki/Generative_engine_optimization) on generative engine optimization (November 12, 2026 revision) says usage "varies across practitioners, vendors, and publications, with no consensus definition." [Google's 2026 guide](https://developers.google.com/search/docs/fundamentals/ai-optimization-guide) to its generative AI features calls AEO and GEO "terms you may see used to describe work specifically focused on improving visibility in AI search experiences." The table compares how five sources describe AEO and relate it to GEO.
 
@@ -42,7 +44,9 @@ In customs, AEO means Authorised Economic Operator. The [EU's AEO programme](htt
 
 ## Is AEO the same as GEO?
 
-AEO and GEO mostly describe the same work in 2026. Wikipedia treats AEO as another name for [generative engine optimization](/blogs/generative-engine-optimization) (GEO), the practice of improving visibility in AI-generated answers, and Profound calls the two "the same thing". One Microsoft Advertising retail guide defined AEO for AI agents and assistants and GEO for generative AI search, though its [later edition](https://about.ads.microsoft.com/content/dam/sites/msa-about/global/common/content-lib/pdf/from-discovery-to-influence-a-guide-to-geo.pdf), retitled "A guide to GEO," drops AEO. My [GEO vs SEO](/blogs/geo-vs-seo) post compares all three terms side by side.
+AEO and GEO mostly describe the same work in 2026.
+
+Wikipedia treats AEO as another name for [generative engine optimization](/blogs/generative-engine-optimization) (GEO), the practice of improving visibility in AI-generated answers, and Profound calls the two "the same thing". One Microsoft Advertising retail guide defined AEO for AI agents and assistants and GEO for generative AI search, though its [later edition](https://about.ads.microsoft.com/content/dam/sites/msa-about/global/common/content-lib/pdf/from-discovery-to-influence-a-guide-to-geo.pdf), retitled "A guide to GEO," drops AEO. My [GEO vs SEO](/blogs/geo-vs-seo) post compares all three terms side by side.
 
 ## Where did answer engine optimization come from?
 
@@ -82,7 +86,7 @@ Google's 2026 guide says "optimizing for generative AI search is optimizing for 
 
 ## How do you optimize content for answer engines?
 
-Optimize content for answer engines by answering each question in one or two sentences right under a heading that asks it, then adding a list or table where one fits. [Microsoft's checklist](https://about.ads.microsoft.com/en/blog/post/october-2025/optimizing-your-content-for-inclusion-in-ai-search-answers) for featured snippets in AI search asks for "concise answers," "structured formatting," "strong headings" and "self-contained phrasing."
+Optimize content for answer engines by answering each question in one or two sentences right under a heading that asks it, then adding a list or table where one fits. [Microsoft's list](https://about.ads.microsoft.com/en/blog/post/october-2025/optimizing-your-content-for-inclusion-in-ai-search-answers) of what makes content eligible for featured snippets in AI search asks for "concise answers," "structured formatting," "strong headings" and "self-contained phrasing."
 
 1. Collect the questions people ask: People Also Ask boxes, where Google says featured snippets can also appear, plus Search Console queries and questions from sales and support calls.
 2. Turn each question into a heading. Microsoft's example swaps a vague "Learn More" for "What Makes This Dishwasher Quieter Than Most Models?"
@@ -103,9 +107,9 @@ Google's [speakable documentation](https://developers.google.com/search/docs/app
 
 ## Where should you start with AEO?
 
-Start AEO with the questions your pages already get impressions for. If a colleague asks "what is AEO", walk them through this check on your own pages.
+Start AEO with the questions your pages already get impressions for, and check which pages Google quotes or links to when it answers each one.
 
-In Google Search Console, pick queries phrased as questions and match each one to the page that should answer it. Search each question on Google and note whether a featured snippet or an AI Overview appears and which pages it links to. Where another page is quoted or linked instead of yours, compare its opening with the first two sentences under your matching heading. Then check that your page's snippet controls aren't keeping it out.
+In Google Search Console, pick queries phrased as questions and match each one to the page that should answer it. Search each question on Google, for example "what is AEO", and note whether a featured snippet or an AI Overview appears and which pages it links to. Where another page is quoted or linked instead of yours, compare its opening with the first two sentences under your matching heading. Then check that your page's snippet controls aren't keeping it out.
 
 Search Console's [generative AI performance report](https://developers.google.com/search/blog/2026/06/gen-ai-performance-reports) shows your impressions in AI Overviews and AI Mode. To track ChatGPT and Perplexity answers over repeated runs, see my guide to [AI visibility](/blogs/ai-visibility), and my comparison of [GEO tools](/blogs/geo-tools) covers the trackers.
 `.trim(),
@@ -116,7 +120,7 @@ Search Console's [generative AI performance report](https://developers.google.co
     "The term AEO was in use by February 2018, when Search Engine Watch described it as the strategy for voice-driven \"answer engines\".",
     "Google stopped showing How-to rich results in September 2023 and FAQ rich results on May 7, 2026, so HowTo and FAQPage markup no longer earn a visible result.",
     "In Google, featured snippets and AI Overview or AI Mode links both require a page that is eligible to show a snippet, so nosnippet, data-nosnippet and max-snippet apply to each.",
-    "Google calls optimizing for generative AI search \"still SEO\", and Microsoft's checklist for featured snippets in AI search asks for concise answers, lists and tables, strong headings and self-contained sentences.",
+    "Google calls optimizing for generative AI search \"still SEO\", and Microsoft's list of what makes content eligible for featured snippets in AI search asks for concise answers, lists and tables, strong headings and self-contained sentences.",
   ],
   faqs: [
     {

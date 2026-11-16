@@ -62,7 +62,7 @@ Here are each engine's crawler rules and citation figures:
 
 | What to check | ChatGPT | Perplexity |
 | --- | --- | --- |
-| Search crawler to allow | OAI-SearchBot, from the IPs in openai.com/searchbot.json | PerplexityBot, from the IPs in www.perplexity.ai/perplexitybot.json |
+| Search crawler to allow | OAI-SearchBot, from the IPs in [openai.com/searchbot.json](https://openai.com/searchbot.json) | PerplexityBot, from the IPs in [www.perplexity.ai/perplexitybot.json](https://www.perplexity.ai/perplexitybot.json) |
 | User-triggered fetcher | ChatGPT-User; robots.txt rules "may not apply" | Perplexity-User; "generally ignores robots.txt rules" |
 | Training crawler | GPTBot, a separate setting from search | PerplexityBot is "not used to crawl content for AI foundation models" |
 | Time for a robots.txt change to apply | Can take about 24 hours | May take up to 24 hours |
