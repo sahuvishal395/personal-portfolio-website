@@ -5,6 +5,7 @@ import ThemeProvider from "./components/ThemeProvider";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import AnimatedBackground from "./components/AnimatedBackground";
+import EnquiryWidget from "./components/EnquiryWidget";
 import JsonLd, { personId, websiteId } from "./components/JsonLd";
 import { site } from "./data/site";
 import { skillGroups } from "./data/about";
@@ -186,6 +187,7 @@ export default function RootLayout({
           <Navbar />
           <main className="flex-1 relative z-10 pt-16">{children}</main>
           <Footer />
+          <EnquiryWidget />
         </ThemeProvider>
       </body>
     </html>

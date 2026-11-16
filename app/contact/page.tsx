@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PageTransition from "../components/PageTransition";
 import { motion } from "framer-motion";
 import {
@@ -27,9 +27,16 @@ export default function ContactPage() {
     email: "",
     message: "",
   });
+  const [company, setCompany] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
+  // When the form appeared; the API drops posts that arrive implausibly fast.
+  const openedAt = useRef(0);
+
+  useEffect(() => {
+    openedAt.current = Date.now();
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,10 +49,21 @@ export default function ContactPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formState),
+        body: JSON.stringify({
+          ...formState,
+          company,
+          source: "contact-page",
+          page: "/contact",
+          elapsedMs: Date.now() - openedAt.current,
+        }),
       });
 
       if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        if ((response.status === 400 || response.status === 429) && data.error) {
+          setError(data.error);
+          return;
+        }
         throw new Error("Failed to send message");
       }
 
@@ -241,6 +259,19 @@ export default function ContactPage() {
                         (e.target.style.borderColor = "var(--border)")
                       }
                       placeholder="Tell me about the role or project..."
+                    />
+                  </div>
+
+                  {/* Honeypot: hidden from people, often filled in by bots. */}
+                  <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+                    <label htmlFor="contact-company">Company</label>
+                    <input
+                      id="contact-company"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={company}
+                      onChange={(e) => setCompany(e.target.value)}
                     />
                   </div>
 
